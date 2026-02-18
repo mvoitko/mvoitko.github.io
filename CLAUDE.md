@@ -33,11 +33,10 @@ Since there is no build step, development is direct file editing:
 
 1. Edit `index.html` or `styles.css` directly
 2. Open `index.html` in a browser to preview locally (no server needed)
-3. Commit and push to `master` to deploy
 
 ### Deployment
 
-GitHub Pages serves the `master` branch root directory. Changes pushed to `master` are live within seconds to minutes at `maxvoitko.dev`.
+GitHub Pages serves the `master` branch root directory. Changes merged to `master` are live within seconds to minutes at `maxvoitko.dev`.
 
 There are no CI/CD pipelines, linters, or test runners configured.
 
@@ -160,6 +159,46 @@ Populate `<div id="achievements">` with project entries (structure TBD; add corr
 
 ## Git Workflow
 
-- **Default branch**: `master` (used for deployment)
-- **No PR process** is enforced — direct commits to `master` deploy the site
-- Commit messages should be short and descriptive (e.g., `Add profile photo`, `Update resume link`)
+### Branches
+
+- **`master`** — production branch; GitHub Pages deploys from here automatically
+- **`feature/<short-description>`** — for new content or features (e.g., `feature/add-timeline`)
+- **`fix/<short-description>`** — for bug fixes (e.g., `fix/resume-link`)
+
+Never commit directly to `master`. All changes go through a branch and pull request.
+
+### Branch lifecycle
+
+```
+master
+  └─► feature/add-timeline     # create branch from master
+        └─► commit changes
+        └─► push branch
+        └─► open PR → master
+        └─► review agent approves
+        └─► merge to master
+```
+
+### Commit messages
+
+Keep them short and imperative (present tense):
+
+```
+Add profile photo
+Fix resume PDF link
+Update tagline copy
+Add LinkedIn social link
+```
+
+### Code review
+
+All PRs are reviewed by a **review agent** before merging. The review agent checks:
+
+- HTML validity and semantic correctness
+- CSS consistency with existing conventions (colors, fonts, selectors)
+- Accessibility (alt text, tabindex, accesskey)
+- No inline styles introduced
+- No unintended placeholders left empty
+- No build tooling or frameworks added without discussion
+
+Address any review comments before merging.
