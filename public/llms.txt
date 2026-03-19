@@ -1,26 +1,52 @@
 # Maksym Voitko — mxvtk.dev
 
-> Technology leader and staff-level engineer with 10+ years building data platforms and AI systems.
+> Technology leader and staff-level engineer with 10+ years building data platforms, AI systems and leading R&D teams.
 
 ## About
 
-Maksym Voitko is a technology leader joining Monday.com as R&D Tech Lead (April 2026). Previously Head of Data & AI at Honeycomb Software, leading ML, software and DevOps engineers building end-to-end data products, vectorisation pipelines and multi-agent RAG systems.
+Maksym Voitko is a technology leader joining Monday.com as R&D Tech Lead (April 2026). Previously Head of Data & AI at Honeycomb Software, where he led a cross-functional team of ML, software and DevOps engineers building end-to-end data products, vectorisation pipelines and multi-agent RAG systems.
 
-Career path: QA → Test Automation → Data Engineering (glomex) → Computer Vision/AI (SoftConstruct AJNA) → ML Team Lead (GR8 Tech) → Head of Data & AI (Honeycomb) → Monday.com.
+Career path: QA → Test Automation → Data Engineering (glomex) → Computer Vision/AI (SoftConstruct AJNA) → ML Team Lead (GR8 Tech) → Head of Data & AI (Honeycomb) → R&D Tech Lead (Monday.com).
 
-Education: Master's in Computer Engineering (KPI, 2018), Master's in Civil Engineering (Kyiv, 2013).
+Education: Master's in Computer Engineering (KPI, 2018), Master's in Civil Engineering (KNUCA, 2013).
+
+## Expertise
+
+- **Retrieval-Augmented Generation (RAG)**: Designed and deployed multi-agent RAG systems with vectorisation pipelines, embedding strategies and retrieval-optimised architectures.
+- **MLOps**: Built production MLOps infrastructure from scratch using Kubernetes, Kubeflow, Airflow, MLFlow and DVC. Created YAML-driven DAG factories for code-free pipeline authoring.
+- **Data Platforms**: End-to-end data platform design — real-time analytics pipelines, data warehousing, ETL/ELT, streaming with Kafka, migration and optimisation.
+- **Computer Vision**: Led development of AI-powered sports tracking (AJNA) with panoramic video stitching, object detection, player and ball tracking from 8K camera feeds.
+- **Engineering Leadership**: Led cross-functional R&D teams (ML, software, DevOps). Designed interview processes, mentored engineers, drove technical strategy.
+
+## Notable Projects
+
+- **Multi-Agent RAG at Honeycomb Software**: Architected vectorisation pipelines and deployed multi-agent RAG systems for end-to-end AI data products.
+- **ML Recommendation Platform at GR8 Tech**: Designed a machine-learning recommendation engine that increased user engagement and retention.
+- **AJNA Sports AI at SoftConstruct**: Led development of an AI-powered sports tracking system that stitched two 8K camera feeds into panoramic video and used computer vision to analyse ball speed, player density and movement.
+- **YAML DAG Factory at GR8 Tech**: Created a YAML-driven DAG factory enabling data scientists to author Airflow pipelines without writing code.
+
+## Speaking & Collaboration
+
+Maksym is available as a conference speaker on topics including RAG system architecture, MLOps best practices, data platform design, AI engineering leadership and building AI teams. For speaking enquiries, reach out via email or LinkedIn.
 
 ## Skills
 
-Python, Go, Bash, FastAPI, Flask, AWS, GCP, Kubernetes, Helm, Terraform, Docker, Kafka, Airflow, Kubeflow, MLFlow, PyTorch, LangChain, LlamaIndex, Redis, Elasticsearch.
+Python, Go, Bash, FastAPI, Flask, AWS, GCP, Kubernetes, Helm, Terraform, Docker, Kafka, Airflow, Kubeflow, MLFlow, DVC, PyTorch, LangChain, LlamaIndex, Redis, Elasticsearch, Prometheus.
 
 ## Links
 
 - Site: https://mxvtk.dev
+- About: https://mxvtk.dev/about/
 - Blog: https://mxvtk.dev/blog/
-- RSS: https://mxvtk.dev/rss.xml
 - Timeline: https://mxvtk.dev/timeline/
 - Resume: https://mxvtk.dev/resume/
+- RSS: https://mxvtk.dev/rss.xml
 - LinkedIn: https://linkedin.com/in/mvoitko
 - GitHub: https://github.com/mvoitko
+- StackOverflow: https://stackoverflow.com/users/5592286/max-voitko
+- X: https://x.com/mxvtk1
+- Threads: https://www.threads.com/@m_voitko
+- Instagram: https://instagram.com/@m_voitko
+- Telegram: https://t.me/forgottendatashadows
 - Email: max.voitko@gmail.com
+- Full LLM context: https://mxvtk.dev/llms-full.txt

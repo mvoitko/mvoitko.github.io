@@ -20,7 +20,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'" />
     <meta name="description" content={description} />
+    <meta name="author" content="Maksym Voitko" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="author" href="https://mxvtk.dev/about/" />
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl.href} />
     <!-- Open Graph -->
@@ -39,6 +41,83 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <!-- Fonts: self-hosted woff2 with preload -->
     <link rel="preload" href="/fonts/fira-code.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://mxvtk.dev/#website",
+          "url": "https://mxvtk.dev",
+          "name": "Maksym Voitko",
+          "description": "Technology leader and staff engineer building data platforms and AI systems.",
+          "publisher": { "@id": "https://mxvtk.dev/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://mxvtk.dev/#person",
+          "name": "Maksym Voitko",
+          "url": "https://mxvtk.dev",
+          "jobTitle": "R&D Tech Lead",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Monday.com",
+            "url": "https://monday.com"
+          },
+          "alumniOf": [
+            {
+              "@type": "EducationalOrganization",
+              "name": "National Technical University of Ukraine \"Kyiv Polytechnic Institute\"",
+              "url": "https://kpi.ua"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Kyiv National University of Construction and Architecture",
+              "url": "https://knuba.edu.ua"
+            }
+          ],
+          "memberOf": [
+            {
+              "@type": "Organization",
+              "name": "AI Accelerator Institute"
+            },
+            {
+              "@type": "Organization",
+              "name": "Lens Champions"
+            },
+            {
+              "@type": "Organization",
+              "name": "BADideas.fund"
+            }
+          ],
+          "knowsAbout": [
+            "Retrieval-Augmented Generation (RAG)",
+            "MLOps",
+            "Data Platforms",
+            "Computer Vision",
+            "Machine Learning",
+            "Kubernetes",
+            "Python",
+            "Go",
+            "AI Engineering Leadership",
+            "Data Engineering",
+            "LangChain",
+            "LlamaIndex",
+            "FastAPI",
+            "PyTorch"
+          ],
+          "sameAs": [
+            "https://linkedin.com/in/mvoitko",
+            "https://github.com/mvoitko",
+            "https://stackoverflow.com/users/5592286/max-voitko",
+            "https://x.com/mxvtk1",
+            "https://www.threads.com/@m_voitko",
+            "https://instagram.com/@m_voitko",
+            "https://t.me/forgottendatashadows"
+          ]
+        }
+      ]
+    })} />
   </head>
   <body>
     <script is:inline>
