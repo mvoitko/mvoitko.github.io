@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="About — Maksym Voitko" description="Technology leader and staff engineer building data platforms and AI systems." activeNav="about">
   <div class="about-page">
     <article class="prose" aria-label="About Maksym Voitko">
-      <h1>About <span class="highlight">Me</span></h1>
+      <h1 class="page-title">About <span class="highlight">Me</span></h1>
       <p>
         Hi, I'm <strong>Maksym Voitko</strong> — a technology leader and staff-level engineer with over ten years of experience building data and AI platforms. I am joining <a href="https://monday.com" target="_blank" rel="noopener noreferrer">Monday.com</a> as an R&D Tech Lead (starting 13 April 2026).
       </p>
@@ -32,10 +32,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     max-width: 700px;
   }
   .prose h1 {
-    font-family: var(--font-mono);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
     margin-bottom: 2rem;
   }
   .prose p {

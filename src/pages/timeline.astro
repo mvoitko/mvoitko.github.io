@@ -17,7 +17,7 @@ const renderedEvents = await Promise.all(
 
 <BaseLayout title="Timeline — Maksym Voitko" description="Career milestones, education, and life events." activeNav="timeline">
   <div class="page-header">
-    <h1>My <span class="highlight">Timeline</span></h1>
+    <h1 class="page-title">My <span class="highlight">Timeline</span></h1>
     <p>A journey through career milestones, education, and life events.</p>
   </div>
 
@@ -49,10 +49,6 @@ const renderedEvents = await Promise.all(
     margin-bottom: 4rem;
   }
   .page-header h1 {
-    font-family: var(--font-mono);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
     margin-bottom: 0.75rem;
   }
   .page-header p {
