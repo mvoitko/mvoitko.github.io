@@ -4,7 +4,7 @@ This file provides guidance to AI assistants working on the mvoitko.github.io re
 
 ## Project Overview
 
-Personal portfolio website for **Maksym Voitko** — technology leader and staff engineer. Built with **Astro** (static site generator), deployed to GitHub Pages at `maxvoitko.dev`.
+Personal portfolio website for **Maksym Voitko** — technology leader and staff engineer. Built with **Astro** (static site generator), deployed to GitHub Pages at `mxvtk.dev`.
 
 ## Repository Structure
 
@@ -12,7 +12,7 @@ Personal portfolio website for **Maksym Voitko** — technology leader and staff
 mvoitko.github.io/
 ├── .github/workflows/deploy.yml  # GitHub Actions build + deploy
 ├── public/
-│   ├── CNAME                     # Custom domain (maxvoitko.dev)
+│   ├── CNAME                     # Custom domain (mxvtk.dev)
 │   └── favicon.svg
 ├── src/
 │   ├── content.config.ts            # Zod schemas for content collections
