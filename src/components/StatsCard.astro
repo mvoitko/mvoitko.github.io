@@ -1,0 +1,37 @@
+---
+import BentoCard from './BentoCard.astro';
+---
+
+<BentoCard span={4} class="stats-card">
+  <div class="stat">
+    <div class="stat-number">10+</div>
+    <div class="stat-label">years in tech</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">12+</div>
+    <div class="stat-label">engineers led</div>
+  </div>
+</BentoCard>
+
+<style>
+  .stats-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .stat-number {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+</style>

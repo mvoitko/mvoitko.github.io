@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BentoCard from './BentoCard.astro';
+
+const events = (await getCollection('timeline'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 6);
+const hasEvents = events.length > 0;
+---
+
+<BentoCard span={7}>
+  <div class="card-header"><span class="card-icon">&#128337;</span><h3>Timeline</h3></div>
+  <p>Career &amp; life milestones.</p>
+  {hasEvents ? (
+    <ul class="timeline-preview" role="list">
+      {events.map(event => (
+        <li>
+          <span class="year">{event.data.date.getUTCFullYear()}</span>
+          {event.data.title}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="coming-soon">Timeline events coming soon.</p>
+  )}
+</BentoCard>
+
+<style>
+  .timeline-preview {
+    list-style: none;
+    margin-top: 1rem;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+  .timeline-preview::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 2px;
+    background: var(--accent-border);
+  }
+  .timeline-preview li {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    padding: 0.4rem 0;
+    position: relative;
+  }
+  .timeline-preview li::before {
+    content: '';
+    position: absolute;
+    left: -1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .year {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.75rem;
+    margin-right: 0.4rem;
+  }
+</style>

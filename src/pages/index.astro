@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import AboutCard from '../components/AboutCard.astro';
+import StatsCard from '../components/StatsCard.astro';
+import SocialsCard from '../components/SocialsCard.astro';
+import SkillsCard from '../components/SkillsCard.astro';
+import TimelinePreview from '../components/TimelinePreview.astro';
+import BlogPreview from '../components/BlogPreview.astro';
+import BeyondCodeCard from '../components/BeyondCodeCard.astro';
+---
+
+<BaseLayout title="Maksym Voitko" activeNav="home">
+  <Hero />
+  <h2 class="section-label">at a glance</h2>
+  <div class="bento">
+    <AboutCard />       <!-- span-8 -->
+    <StatsCard />       <!-- span-4 -->
+    <SkillsCard />      <!-- span-5 -->
+    <SocialsCard />     <!-- span-7 -->
+    <TimelinePreview /> <!-- span-7 -->
+    <BeyondCodeCard />  <!-- span-5 -->
+    <BlogPreview />     <!-- span-12 -->
+  </div>
+</BaseLayout>

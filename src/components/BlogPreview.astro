@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import BentoCard from './BentoCard.astro';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(p => p.data.status === 'published')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+const hasContent = posts.length > 0;
+
+if (import.meta.env.DEV && allPosts.length > 0 && !hasContent) {
+  console.warn(
+    `[BlogPreview] Found ${allPosts.length} blog post(s) but none are published. ` +
+    `Check that at least one post has 'status: published' in its frontmatter.`
+  );
+}
+---
+
+<BentoCard span={12}>
+  <div class="card-header"><span class="card-icon">&#9998;</span><h3>Latest Posts</h3></div>
+  {hasContent ? (
+    posts.map(post => (
+      <div class="blog-preview-item">
+        <div class="post-date">{post.data.date.toISOString().slice(0, 10)}</div>
+        <div class="post-title">{post.data.title}</div>
+        {post.data.description && <div class="post-excerpt">{post.data.description}</div>}
+      </div>
+    ))
+  ) : (
+    <div class="coming-soon">
+      <span class="prompt">&gt; blog.init()</span>
+      <p>Posts coming soon.</p>
+    </div>
+  )}
+</BentoCard>
+
+<style>
+  .blog-preview-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .blog-preview-item:last-child { border-bottom: none; }
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .post-title {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--text);
+    margin: 0.25rem 0;
+  }
+  .post-excerpt {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .coming-soon {
+    margin-top: 1rem;
+  }
+  .prompt {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+  .coming-soon p {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>

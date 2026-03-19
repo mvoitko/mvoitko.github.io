@@ -1,0 +1,72 @@
+---
+const categories = ['all', 'career', 'education', 'life'];
+---
+
+<div class="filters" role="group" aria-label="Filter timeline events">
+  {categories.map(cat => (
+    <button
+      class={`filter-btn ${cat === 'all' ? 'active' : ''}`}
+      data-filter={cat}
+      aria-pressed={cat === 'all' ? 'true' : 'false'}
+    >
+      {cat.charAt(0).toUpperCase() + cat.slice(1)}
+    </button>
+  ))}
+</div>
+
+<p class="filter-empty-msg" style="display:none;">No events match this filter.</p>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      if (!filter) return;
+
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      let visibleCount = 0;
+      document.querySelectorAll('.tl-event').forEach(event => {
+        const show = filter === 'all' || event.getAttribute('data-category') === filter;
+        (event as HTMLElement).style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      const emptyMsg = document.querySelector('.filter-empty-msg');
+      if (emptyMsg) {
+        (emptyMsg as HTMLElement).style.display = visibleCount === 0 ? '' : 'none';
+      }
+    });
+  });
+</script>
+
+<style>
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--accent-border); color: var(--text); }
+  .filter-btn.active {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

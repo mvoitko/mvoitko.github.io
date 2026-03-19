@@ -1,0 +1,16 @@
+---
+import { displayLinks } from '../data/social-links';
+
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['social-bar', className]}>
+  {displayLinks.map(link => (
+    <a class="social-link" href={link.url} target="_blank" rel="noopener noreferrer">
+      {link.name}
+    </a>
+  ))}
+</div>
