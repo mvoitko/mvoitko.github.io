@@ -104,9 +104,9 @@ body {
 
 /* ── Main Container ── */
 main {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 clamp(1.5rem, 4vw, 4rem);
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
   flex: 1;
 }
 
