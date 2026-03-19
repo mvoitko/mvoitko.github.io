@@ -1,4 +1,4 @@
-# Maksym Voitko — maxvoitko.dev
+# Maksym Voitko — mxvtk.dev
 
 > Technology leader and staff-level engineer with 10+ years building data platforms and AI systems.
 
@@ -16,11 +16,11 @@ Python, Go, Bash, FastAPI, Flask, AWS, GCP, Kubernetes, Helm, Terraform, Docker,
 
 ## Links
 
-- Site: https://maxvoitko.dev
-- Blog: https://maxvoitko.dev/blog/
-- RSS: https://maxvoitko.dev/rss.xml
-- Timeline: https://maxvoitko.dev/timeline/
-- Resume: https://maxvoitko.dev/resume/
+- Site: https://mxvtk.dev
+- Blog: https://mxvtk.dev/blog/
+- RSS: https://mxvtk.dev/rss.xml
+- Timeline: https://mxvtk.dev/timeline/
+- Resume: https://mxvtk.dev/resume/
 - LinkedIn: https://linkedin.com/in/mvoitko
 - GitHub: https://github.com/mvoitko
 - Email: max.voitko@gmail.com
