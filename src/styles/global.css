@@ -29,6 +29,7 @@
   --accent-dim: rgba(0, 255, 136, 0.1);
   --accent-border: rgba(0, 255, 136, 0.2);
   --accent-glow: rgba(0, 255, 136, 0.15);
+  --accent-hover: #33FF9F;
   --border: rgba(255, 255, 255, 0.15);
   --career: #00FF88;
   --education: #6C9FFF;
@@ -50,6 +51,7 @@
   --accent-dim: rgba(0, 135, 90, 0.08);
   --accent-border: rgba(0, 135, 90, 0.2);
   --accent-glow: rgba(0, 135, 90, 0.1);
+  --accent-hover: #006B48;
   --border: rgba(0, 0, 0, 0.2);
   --header-bg: rgba(247, 247, 247, 0.85);
   --career: #00875A;
@@ -125,8 +127,8 @@ main {
   font-weight: 600;
 }
 .btn-primary:hover {
-  background: #33FF9F;
-  box-shadow: 0 0 24px rgba(0, 255, 136, 0.3);
+  background: var(--accent-hover);
+  box-shadow: 0 0 24px var(--accent-glow);
 }
 .btn-secondary {
   background: transparent;
@@ -258,6 +260,12 @@ main {
 }
 
 /* ── Utilities ── */
+.page-title {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
 .highlight { color: var(--accent); }
 
 /* ── Responsive ── */

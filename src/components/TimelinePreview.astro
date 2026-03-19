@@ -23,6 +23,7 @@ const hasEvents = events.length > 0;
   ) : (
     <p class="coming-soon">Timeline events coming soon.</p>
   )}
+  <a href="/timeline/" class="view-all-link">See full timeline &rarr;</a>
 </BentoCard>
 
 <style>
@@ -65,4 +66,14 @@ const hasEvents = events.length > 0;
     font-size: 0.75rem;
     margin-right: 0.4rem;
   }
+  .view-all-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .view-all-link:hover { opacity: 0.8; }
 </style>
