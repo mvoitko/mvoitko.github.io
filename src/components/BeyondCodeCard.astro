@@ -1,0 +1,24 @@
+---
+import BentoCard from './BentoCard.astro';
+---
+
+<BentoCard span={5}>
+  <div class="card-header"><span class="card-icon">&#127793;</span><h3>Beyond Code</h3></div>
+  <p class="beyond-text">Angel investor backing early-stage CEE/CIS startups through BADideas.fund. Lens champion for the Kubernetes community. Sharing knowledge via a Ukrainian-language Telegram channel.</p>
+  <a class="telegram-link" href="https://t.me/@forgottendatashadows" target="_blank" rel="noopener noreferrer">&#9654; Тіні Забутих Даних</a>
+</BentoCard>
+
+<style>
+  .beyond-text {
+    margin-bottom: 0.8rem;
+  }
+  .telegram-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+    display: inline-block;
+  }
+  .telegram-link:hover { opacity: 0.8; }
+</style>

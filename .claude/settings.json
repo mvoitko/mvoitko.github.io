@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v jq >/dev/null 2>&1 || exit 0; FILE_PATH=$(jq -r '.tool_input.file_path // empty'); if [ -n \"$FILE_PATH\" ] && echo \"$FILE_PATH\" | grep -qE 'pnpm-lock\\.yaml|package-lock\\.json'; then echo 'BLOCK: Do not edit lock files directly — use pnpm install' >&2; exit 2; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v jq >/dev/null 2>&1 || exit 0; FILE_PATH=$(jq -r '.tool_input.file_path // empty'); if [ -n \"$FILE_PATH\" ] && echo \"$FILE_PATH\" | grep -qE '\\.(astro|css|ts)$'; then cd ~/Documents/projects/mvoitko.github.io && pnpm build 2>&1; BUILD_EXIT=$?; if [ $BUILD_EXIT -ne 0 ]; then echo 'BUILD FAILED' >&2; fi; exit $BUILD_EXIT; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

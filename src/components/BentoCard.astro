@@ -1,0 +1,11 @@
+---
+interface Props {
+  span?: number;
+  class?: string;
+}
+const { span = 12, class: className = '' } = Astro.props;
+---
+
+<div class:list={[`bento-card span-${span}`, className]}>
+  <slot />
+</div>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => data.status === 'published'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const hasPosts = posts.length > 0;
+---
+
+<BaseLayout title="Blog — Maksym Voitko" description="Thoughts on data engineering, AI, and technology leadership." activeNav="blog">
+  <div class="page-header">
+    <h1>Blog</h1>
+    <p>Thoughts on data engineering, AI, and technology leadership.</p>
+  </div>
+
+  {hasPosts ? (
+    <div class="posts">
+      {posts.map(post => (
+        <BlogCard
+          title={post.data.title}
+          date={post.data.date}
+          description={post.data.description}
+          tags={post.data.tags}
+          slug={post.id}
+        />
+      ))}
+    </div>
+  ) : (
+    <div class="empty-state">
+      <div class="prompt">&gt; blog.init()</div>
+      <p>Posts coming soon. Subscribe via <a href="/rss.xml">RSS</a> to get notified.</p>
+    </div>
+  )}
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 800px;
+    padding-top: calc(64px + 4rem);
+    padding-bottom: 6rem;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+  .page-header h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+  }
+  .page-header p {
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 0;
+  }
+  .prompt {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .empty-state p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .empty-state a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .empty-state a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    main { padding-top: calc(64px + 2rem); }
+  }
+</style>
