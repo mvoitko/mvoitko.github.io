@@ -1,0 +1,131 @@
+---
+interface Props {
+  date: Date;
+  title: string;
+  category: 'career' | 'education' | 'life';
+  tags: string[];
+}
+const { date, title, category, tags } = Astro.props;
+
+const dateLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+
+<div class="tl-event" data-category={category}>
+  <div class="tl-content">
+    <div class="tl-date">
+      {dateLabel}
+      <span class={`tl-category ${category}`}>{category}</span>
+    </div>
+    <h3>{title}</h3>
+    <div class="tl-body"><slot /></div>
+    {tags.length > 0 && (
+      <div class="tl-tags">
+        {tags.map(tag => <span class="tl-tag">{tag}</span>)}
+      </div>
+    )}
+  </div>
+  <div class="tl-spacer" aria-hidden="true"></div>
+  <div class={`tl-dot ${category}`} aria-hidden="true"></div>
+</div>
+
+<style>
+  .tl-event {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .tl-event:nth-child(odd) { flex-direction: row; }
+  .tl-event:nth-child(even) { flex-direction: row-reverse; }
+
+  .tl-content {
+    width: calc(50% - 2.5rem);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+  .tl-content:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-border);
+    transform: translateY(-2px);
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: 50%;
+    top: 1.5rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--career);
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+  .tl-dot.education { border-color: var(--education); box-shadow: 0 0 12px rgba(108, 159, 255, 0.15); }
+  .tl-dot.life { border-color: var(--life); box-shadow: 0 0 12px rgba(255, 108, 159, 0.15); }
+
+  .tl-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tl-category {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .tl-category.career { background: rgba(0,255,136,0.1); color: var(--career); }
+  .tl-category.education { background: rgba(108,159,255,0.1); color: var(--education); }
+  .tl-category.life { background: rgba(255,108,159,0.1); color: var(--life); }
+
+  .tl-content h3 {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .tl-body {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+  }
+  .tl-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .tl-spacer { width: calc(50% - 2.5rem); }
+
+  @media (max-width: 768px) {
+    .tl-event, .tl-event:nth-child(even) { flex-direction: row; }
+    .tl-content { width: calc(100% - 3.5rem); margin-left: 3.5rem; }
+    .tl-spacer { display: none; }
+    .tl-dot { left: 1.5rem; }
+  }
+</style>

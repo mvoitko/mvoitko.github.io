@@ -1,0 +1,87 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-prefix">hello, world<span class="cursor"></span></div>
+  <h1>Maksym <span class="highlight">Voitko</span></h1>
+  <p class="hero-subtitle">
+    Technology leader &amp; staff engineer building data platforms and AI systems. Currently Head of Data&nbsp;&amp;&nbsp;AI at Honeycomb, joining <a href="https://monday.com" target="_blank" rel="noopener noreferrer" class="monday-link">Monday.com</a> as R&amp;D Tech Lead.
+  </p>
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="/timeline/">view timeline &rarr;</a>
+    <a class="btn btn-ghost" href="/blog/">read the blog</a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 64px;
+  }
+  .hero-prefix {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hero-prefix::before {
+    content: '>';
+    opacity: 0.5;
+  }
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    background: var(--accent);
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+  }
+  .hero h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-subtitle strong { color: var(--text); }
+  .monday-link {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: color 0.2s;
+  }
+  .monday-link:hover { color: var(--accent); }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero { min-height: calc(100vh - 2rem); padding-top: 80px; }
+    .hero-subtitle { font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; }
+    .hero-ctas { flex-direction: column; gap: 0.75rem; }
+    .hero-ctas a { text-align: center; }
+  }
+</style>

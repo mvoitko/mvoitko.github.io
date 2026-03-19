@@ -1,0 +1,26 @@
+# Maksym Voitko — maxvoitko.dev
+
+> Technology leader and staff-level engineer with 10+ years building data platforms and AI systems.
+
+## About
+
+Maksym Voitko is a technology leader joining Monday.com as R&D Tech Lead (April 2026). Previously Head of Data & AI at Honeycomb Software, leading ML, software and DevOps engineers building end-to-end data products, vectorisation pipelines and multi-agent RAG systems.
+
+Career path: QA → Test Automation → Data Engineering (glomex) → Computer Vision/AI (SoftConstruct AJNA) → ML Team Lead (GR8 Tech) → Head of Data & AI (Honeycomb) → Monday.com.
+
+Education: Master's in Computer Engineering (KPI, 2018), Master's in Civil Engineering (Kyiv, 2013).
+
+## Skills
+
+Python, Go, Bash, FastAPI, Flask, AWS, GCP, Kubernetes, Helm, Terraform, Docker, Kafka, Airflow, Kubeflow, MLFlow, PyTorch, LangChain, LlamaIndex, Redis, Elasticsearch.
+
+## Links
+
+- Site: https://maxvoitko.dev
+- Blog: https://maxvoitko.dev/blog/
+- RSS: https://maxvoitko.dev/rss.xml
+- Timeline: https://maxvoitko.dev/timeline/
+- Resume: https://maxvoitko.dev/resume/
+- LinkedIn: https://linkedin.com/in/mvoitko
+- GitHub: https://github.com/mvoitko
+- Email: max.voitko@gmail.com

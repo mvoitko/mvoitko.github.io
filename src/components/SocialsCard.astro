@@ -1,0 +1,45 @@
+---
+import BentoCard from './BentoCard.astro';
+import { displayLinks } from '../data/social-links';
+---
+
+<BentoCard span={7} class="socials-card">
+  <div class="card-header"><span class="card-icon">&#128279;</span><h3>Connect</h3></div>
+  <div class="socials-grid">
+    {displayLinks.map(link => (
+      <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name} title={link.name}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
+      </a>
+    ))}
+  </div>
+</BentoCard>
+
+<style>
+  .socials-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .socials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  .socials-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .socials-grid a:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    transform: translateY(-2px);
+  }
+</style>

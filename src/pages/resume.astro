@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Resume — Maksym Voitko" description="Staff engineer with 10+ years in AI, data engineering and back-end development." activeNav="resume">
+  <div class="page-header">
+    <h1>Resume</h1>
+    <!-- TODO: uncomment when resume.pdf is added to public/ -->
+    <!-- <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener">Download PDF &darr;</a> -->
+  </div>
+
+  <article class="resume">
+    <section>
+      <h2>Summary</h2>
+      <p>A technology leader and staff-level engineer with over ten years of experience in AI, data engineering and back-end development. I love designing and implementing software systems from scratch and integrating new frameworks to enhance product benefits. My work spans leading research and development teams, building AI-powered optical systems, designing recommendation engines and scaling big-data platforms.</p>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-section">
+        <div class="skill-group">
+          <h3>Back-End</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Go</span>
+            <span class="skill-pill">Bash</span>
+            <span class="skill-pill">FastAPI</span>
+            <span class="skill-pill">Flask</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">Redis</span>
+            <span class="skill-pill">Elasticsearch</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">AWS</span>
+            <span class="skill-pill">GCP</span>
+            <span class="skill-pill">Kubernetes</span>
+            <span class="skill-pill">Helm</span>
+            <span class="skill-pill">Terraform</span>
+            <span class="skill-pill">Prometheus</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Data &amp; ML</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">Kafka</span>
+            <span class="skill-pill">Airflow</span>
+            <span class="skill-pill">Kubeflow</span>
+            <span class="skill-pill">MLFlow</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">LangChain</span>
+            <span class="skill-pill">LlamaIndex</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="role">
+        <div class="role-header">
+          <h3>Head of Data &amp; AI</h3>
+          <span class="role-meta">Honeycomb Software &middot; Jul 2023 &ndash; Present</span>
+        </div>
+        <p>Lead a cross-functional team of ML, software and DevOps engineers to build end-to-end data and AI products. Designed vectorisation pipelines and deployed multi-agent RAG systems.</p>
+      </div>
+
+      <div class="role">
+        <div class="role-header">
+          <h3>Research Development Team &amp; Tech Lead</h3>
+          <span class="role-meta">GR8 Tech &middot; 2021 &ndash; Jun 2023</span>
+        </div>
+        <ul role="list">
+          <li>Designed a machine-learning recommendation platform that increased user engagement and retention.</li>
+          <li>Built MLOps infrastructure from scratch with Kubernetes, Kubeflow, Airflow and DVC.</li>
+          <li>Created a YAML-driven DAG factory enabling data scientists to build pipelines without code.</li>
+          <li>Introduced an engineering interview flow that raised candidate quality while reducing the interview loop.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-header">
+          <h3>Team Lead — AJNA Sports AI</h3>
+          <span class="role-meta">SoftConstruct &middot; Jan 2021 &ndash; Sep 2021</span>
+        </div>
+        <p>Led development of an AI-powered sports tracking system. The AJNA platform stitched two 8K camera feeds into a panoramic video and used computer vision to analyse ball speed, player density and movement without human intervention.</p>
+      </div>
+
+      <div class="role">
+        <div class="role-header">
+          <h3>Software Engineer / Data Engineer</h3>
+          <span class="role-meta">glomex GmbH &middot; Jul 2018 &ndash; Mar 2020</span>
+        </div>
+        <ul role="list">
+          <li>Implemented a real-time analytics pipeline.</li>
+          <li>Migrated data pipelines from AWS Redshift to PostgreSQL.</li>
+          <li>Built billing and reporting services.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-header">
+          <h3>Earlier Roles</h3>
+          <span class="role-meta">2015 &ndash; 2018</span>
+        </div>
+        <ul role="list">
+          <li><strong>Senior Test Automation Engineer (Jul 2017 &ndash; Dec 2018)</strong> — improved test automation frameworks and reporting.</li>
+          <li><strong>Quality Assurance &amp; Junior QA (2015 &ndash; 2017)</strong> — cut regression cycle times, mentored new team members and established QA processes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="role">
+        <div class="role-header">
+          <h3>Master's in Computer Engineering</h3>
+          <span class="role-meta">National Technical University of Ukraine "Kyiv Polytechnic Institute" &middot; 2017 &ndash; 2018</span>
+        </div>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <h3>Master's in Civil Engineering</h3>
+          <span class="role-meta">Kyiv National University of Construction and Architecture &middot; 2013</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:max.voitko@gmail.com">max.voitko@gmail.com</a> &middot;
+        <a href="https://linkedin.com/in/mvoitko" target="_blank" rel="noopener">LinkedIn</a> &middot;
+        <a href="https://github.com/mvoitko" target="_blank" rel="noopener">GitHub</a> &middot;
+        <a href="https://stackoverflow.com/users/5592286/max-voitko" target="_blank" rel="noopener">StackOverflow</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 800px;
+    padding-top: calc(64px + 4rem);
+    padding-bottom: 6rem;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .page-header h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .resume section {
+    margin-bottom: 3rem;
+  }
+  .resume h2 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .resume p {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .resume a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-thickness 0.2s;
+  }
+  .resume a:hover { text-decoration-thickness: 2px; }
+
+  .skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .skill-group h3 {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .role {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+  }
+  .role:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-border);
+  }
+  .role-header {
+    margin-bottom: 0.75rem;
+  }
+  .role-header h3 {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+  .role-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .role ul {
+    list-style: none;
+    padding: 0;
+  }
+  .role li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    padding: 0.25rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .role li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+  .role li strong { color: var(--text); }
+  .role p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    main { padding-top: calc(64px + 2rem); }
+    .role { padding: 1.25rem; }
+  }
+</style>
