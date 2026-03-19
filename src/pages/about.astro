@@ -2,18 +2,46 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About — Maksym Voitko" description="Technology leader and staff engineer building data platforms and AI systems." activeNav="about">
+<BaseLayout title="About — Maksym Voitko" description="Learn about Maksym Voitko's journey from civil engineering to leading AI teams. Speaker on MLOps, RAG systems, and data platform architecture." activeNav="about">
   <div class="about-page">
     <article class="prose" aria-label="About Maksym Voitko">
+<<<<<<< feature/content-and-copy
+      <h1>About <span class="highlight">Me</span></h1>
+
+=======
       <h1 class="page-title">About <span class="highlight">Me</span></h1>
+>>>>>>> master
       <p>
-        Hi, I'm <strong>Maksym Voitko</strong> — a technology leader and staff-level engineer with over ten years of experience building data and AI platforms. I am joining <a href="https://monday.com" target="_blank" rel="noopener noreferrer">Monday.com</a> as an R&D Tech Lead (starting 13 April 2026).
+        Most people who end up leading AI teams started in computer science. I started by designing bridges. My first master's degree is in civil engineering from Kyiv National University of Construction and Architecture, and that background gave me something I still rely on every day: a systems-thinking instinct for how complex structures hold together under pressure.
       </p>
+
       <p>
-        My career has evolved from quality assurance to leading research and development in AI.
+        The pivot happened when I realised software could be built the same way -- layer by layer, with strong foundations and clear tolerances. I earned a second master's in computer engineering from KPI, began my career in quality assurance, and quickly moved into test automation. That obsession with reliability became the thread connecting every role that followed.
       </p>
+
       <p>
-        Beyond engineering, I am a <strong>Lens champion</strong> and a member of the <strong>AI Accelerator Institute</strong>. I enjoy reading science fiction and fantasy, mentoring up-and-coming engineers, and sharing knowledge through my Ukrainian-language Telegram channel.
+        At <strong>glomex</strong> in Munich I shifted into data engineering, building real-time analytics pipelines and billing systems on AWS. At <strong>SoftConstruct</strong> I led the AJNA Sports AI team, where we stitched dual 8K camera feeds into panoramic video and used computer vision to track players and ball movement without human operators. That project taught me what it takes to ship AI to production under real-world constraints -- latency budgets, hardware limits, and zero tolerance for downtime.
+      </p>
+
+      <p>
+        From there I joined <strong>GR8 Tech</strong> as ML Team Lead, where I designed a recommendation platform that measurably increased user engagement, built MLOps infrastructure from scratch with Kubernetes, Kubeflow, and Airflow, and created a YAML-driven DAG factory that let data scientists ship pipelines without writing code. As <strong>Head of Data &amp; AI at Honeycomb Software</strong>, I lead a cross-functional team of ML, software, and DevOps engineers building end-to-end data and AI products -- including vectorisation pipelines and multi-agent RAG systems that power core product features. In April 2026, I am joining <a href="https://monday.com" target="_blank" rel="noopener noreferrer">Monday.com</a> as R&amp;D Tech Lead to take on new challenges at scale.
+      </p>
+
+      <h2>What I <span class="highlight">talk about</span></h2>
+      <ul>
+        <li><strong>Production RAG &amp; multi-agent systems</strong> -- architecture, evaluation, and the gap between demo and deployment</li>
+        <li><strong>MLOps &amp; data platform design</strong> -- building infrastructure that lets data scientists move fast without breaking things</li>
+        <li><strong>Computer vision at scale</strong> -- real-time video processing, edge inference, and lessons from the sports AI world</li>
+        <li><strong>Engineering leadership</strong> -- growing teams, designing interview loops, and creating a culture of ownership</li>
+        <li><strong>The non-traditional path into AI</strong> -- how a civil engineering mindset shaped my approach to system design</li>
+      </ul>
+
+      <p>
+        Outside of work, I am a <strong>Lens Champion</strong> in the Kubernetes ecosystem, an angel investor at <strong>BADideas.fund</strong>, and a member of the <strong>AI Accelerator Institute</strong>. I run a Ukrainian-language <strong>Telegram channel</strong> about data and AI, and I am always looking for opportunities to mentor engineers and share what I have learned with the broader community.
+      </p>
+
+      <p class="about-cta">
+        Interested in having me speak at your event? <a href="/speaking/">Let's talk &rarr;</a>
       </p>
     </article>
   </div>
@@ -23,9 +51,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .about-page {
     min-height: calc(100vh - 64px);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding-top: 64px;
+    padding-top: calc(64px + 4rem);
+    padding-bottom: 4rem;
   }
 
   .prose {
@@ -47,6 +76,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transition: text-decoration-thickness 0.2s;
   }
   .prose a:hover { text-decoration-thickness: 2px; }
+  .prose h2 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .prose ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  .prose li {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.8;
+    padding: 0.3rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .prose li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .prose li strong { color: var(--text); }
+  .about-cta {
+    margin-top: 2rem;
+    font-weight: 500;
+  }
+  .about-cta a {
+    font-weight: 600;
+  }
 
   @media (max-width: 768px) {
     .about-page { padding: 64px 0 2rem; min-height: auto; }

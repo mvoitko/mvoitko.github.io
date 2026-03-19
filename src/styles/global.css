@@ -130,6 +130,17 @@ main {
   background: var(--accent-hover);
   box-shadow: 0 0 24px var(--accent-glow);
 }
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--accent-border);
+  font-weight: 500;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.15);
+}
 .btn-ghost {
   background: transparent;
   color: var(--text-muted);
