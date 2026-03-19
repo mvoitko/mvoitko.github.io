@@ -21,11 +21,13 @@ if (import.meta.env.DEV && allPosts.length > 0 && !hasContent) {
   <div class="card-header"><span class="card-icon">&#9998;</span><h3>Latest Posts</h3></div>
   {hasContent ? (
     posts.map(post => (
-      <div class="blog-preview-item">
-        <div class="post-date">{post.data.date.toISOString().slice(0, 10)}</div>
-        <div class="post-title">{post.data.title}</div>
-        {post.data.description && <div class="post-excerpt">{post.data.description}</div>}
-      </div>
+      <a href={`/blog/${post.id}/`} class="blog-preview-link">
+        <div class="blog-preview-item">
+          <div class="post-date">{post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</div>
+          <div class="post-title">{post.data.title}</div>
+          {post.data.description && <div class="post-excerpt">{post.data.description}</div>}
+        </div>
+      </a>
     ))
   ) : (
     <div class="coming-soon">
@@ -33,6 +35,7 @@ if (import.meta.env.DEV && allPosts.length > 0 && !hasContent) {
       <p>Posts coming soon.</p>
     </div>
   )}
+  <a href="/blog/" class="view-all-link">View all posts &rarr;</a>
 </BentoCard>
 
 <style>
@@ -56,6 +59,21 @@ if (import.meta.env.DEV && allPosts.length > 0 && !hasContent) {
     font-size: 0.8rem;
     color: var(--text-muted);
   }
+  .blog-preview-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .view-all-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .view-all-link:hover { opacity: 0.8; }
   .coming-soon {
     margin-top: 1rem;
   }

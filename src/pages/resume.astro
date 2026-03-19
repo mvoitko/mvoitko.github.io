@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Resume — Maksym Voitko" description="Staff engineer with 10+ years in AI, data engineering and back-end development." activeNav="resume">
   <div class="page-header">
-    <h1>Resume</h1>
+    <h1 class="page-title">Resume</h1>
     <!-- TODO: uncomment when resume.pdf is added to public/ -->
     <!-- <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener">Download PDF &darr;</a> -->
   </div>
@@ -156,12 +156,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     flex-wrap: wrap;
     gap: 1rem;
   }
-  .page-header h1 {
-    font-family: var(--font-mono);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-  }
 
   .resume section {
     margin-bottom: 3rem;
@@ -236,7 +230,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .role li {
     font-size: 0.88rem;
-    color: var(--text-muted);
+    color: var(--text);
     line-height: 1.65;
     padding: 0.25rem 0;
     padding-left: 1rem;
