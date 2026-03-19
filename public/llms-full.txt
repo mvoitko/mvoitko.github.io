@@ -1,0 +1,113 @@
+# Maksym Voitko — Full Profile — mxvtk.dev
+
+> Technology leader and staff-level engineer with 10+ years building data platforms, AI systems and leading R&D teams.
+
+## About
+
+Maksym Voitko is a technology leader joining Monday.com as R&D Tech Lead (April 2026). Previously Head of Data & AI at Honeycomb Software, where he led a cross-functional team of ML, software and DevOps engineers building end-to-end data products, vectorisation pipelines and multi-agent RAG systems.
+
+His career has evolved from quality assurance and test automation into data engineering, computer vision, machine learning and eventually leading research and development in AI. He combines deep technical expertise with hands-on leadership experience across startups and scale-ups.
+
+Beyond engineering, Maksym is a Lens champion advocating for Kubernetes and cloud-native best practices, a member of the AI Accelerator Institute, and an angel investor at BADideas.fund supporting early-stage CEE/CIS startups. He runs a Ukrainian-language Telegram channel sharing data and AI knowledge.
+
+Education: Master's in Computer Engineering from the National Technical University of Ukraine "Kyiv Polytechnic Institute" (KPI, 2018), Master's in Civil Engineering from Kyiv National University of Construction and Architecture (KNUCA, 2013).
+
+## Expertise
+
+- **Retrieval-Augmented Generation (RAG)**: Designed and deployed multi-agent RAG systems with vectorisation pipelines, embedding strategies and retrieval-optimised architectures. Experienced with LangChain, LlamaIndex, vector databases and production RAG deployment patterns.
+- **MLOps**: Built production MLOps infrastructure from scratch using Kubernetes, Kubeflow, Airflow, MLFlow and DVC. Created YAML-driven DAG factories for code-free pipeline authoring by data scientists.
+- **Data Platforms**: End-to-end data platform design — real-time analytics pipelines, data warehousing, ETL/ELT, streaming with Kafka, migration and optimisation. Experience spanning AWS and GCP.
+- **Computer Vision**: Led development of AI-powered sports tracking (AJNA) with panoramic video stitching, object detection, player and ball tracking from 8K camera feeds.
+- **Engineering Leadership**: Led cross-functional R&D teams (ML, software, DevOps). Designed interview processes, mentored engineers, drove technical strategy.
+
+## Skills
+
+Python, Go, Bash, FastAPI, Flask, AWS, GCP, Kubernetes, Helm, Terraform, Docker, Kafka, Airflow, Kubeflow, MLFlow, DVC, PyTorch, LangChain, LlamaIndex, Redis, Elasticsearch, Prometheus.
+
+## Career Timeline
+
+### R&D Tech Lead — Monday.com (April 2026 – present)
+Joining Monday.com as an R&D Tech Lead. This marks a new chapter where Maksym will leverage his extensive experience in AI, data engineering and engineering leadership to help build scalable products at one of the world's leading work operating systems. The role focuses on driving technical strategy and leading high-impact R&D initiatives within Monday.com's engineering organisation.
+
+### Lens Champion (December 2025)
+Recognised as a Lens champion, advocating for Kubernetes and cloud-native best practices within the developer community. This role involves mentoring other engineers on container orchestration, contributing to the open-source ecosystem and shaping the future of the Lens project. Kubernetes, Helm and cloud-native technologies have been central to Maksym's infrastructure work throughout his career.
+
+### Angel Investor — BADideas.fund (February 2024 – present)
+Started investing in early-stage CEE/CIS startups through BADideas.fund. This role broadens Maksym's perspective on emerging technologies and business models while allowing him to support and mentor the regional startup community. The investment focus spans AI, data and developer tooling companies in the Central and Eastern European ecosystem.
+
+### Head of Data & AI — Honeycomb Software (July 2023 – March 2026)
+Led a cross-functional team of ML engineers, software engineers and DevOps engineers to build end-to-end data and AI products. Designed vectorisation pipelines for document processing and deployed multi-agent RAG systems that combined retrieval, reasoning and generation capabilities. The team built production-grade AI solutions including automated data extraction, intelligent search and conversational AI features. Technologies included Python, LangChain, LlamaIndex, FastAPI, Kubernetes, Docker, Redis and Elasticsearch.
+
+### Research Development Team & Tech Lead — GR8 Tech (January 2021 – June 2023)
+Designed a machine-learning recommendation platform that significantly increased user engagement and retention metrics. Built the entire MLOps infrastructure from scratch using Kubernetes, Kubeflow, Airflow and DVC, enabling reproducible model training and deployment. Created a YAML-driven DAG factory that enabled data scientists to author complex Airflow pipelines without writing any code, dramatically accelerating experiment-to-production cycles. Implemented an improved engineering interview flow that raised candidate quality while reducing the time and effort of the interview loop. Technologies included Python, Kubernetes, Kubeflow, Airflow, MLFlow, DVC, Docker, Kafka and PyTorch.
+
+### Team Lead — AJNA Sports AI, SoftConstruct (March 2020 – September 2021)
+Led the development of AJNA, an AI-powered sports tracking and broadcast system. The platform stitched two 8K camera feeds into a seamless panoramic video and used computer vision models to track the ball, referees and players without human intervention. AJNA delivered realistic HD broadcasts with augmented visualisations showing ball speed, player density and movement analytics. The system processed high-resolution video streams in near real-time and provided sports analytics data for betting and broadcasting markets. Technologies included Python, PyTorch, OpenCV, Docker and GPU-accelerated inference.
+
+### Software Engineer / Data Engineer — glomex GmbH (July 2018 – March 2020)
+Implemented a real-time analytics pipeline processing millions of video events for one of Europe's largest video content platforms. Migrated data pipelines from AWS Redshift to PostgreSQL, improving query performance and reducing infrastructure costs. Built billing and reporting services that automated revenue reconciliation across multiple publisher partners. The role spanned both software engineering and data engineering, working with streaming data and cloud infrastructure. Technologies included Python, AWS, PostgreSQL, Redshift, Kafka and Docker.
+
+### Senior Test Automation Engineer (July 2017 – December 2018)
+Refactored the test automation framework, reducing maintenance overhead by 25% and improving test reliability. Transformed test results into human-readable HTML reports and automated smoke test execution. Built CI/CD integration for automated test suites and mentored junior team members on testing best practices. Technologies included Python, Selenium, Jenkins and Bash.
+
+### Quality Assurance & Junior QA (2015 – 2017)
+Cut regression cycle times through process improvements and test optimisation. Mentored new team members, established QA processes and contributed to cross-team testing standards. This period laid the foundation for a systematic approach to software quality that would inform later engineering leadership roles.
+
+## Education
+
+### Master's in Computer Engineering — KPI (2017 – 2018)
+Earned a Master's Degree in Computer Engineering from the National Technical University of Ukraine "Kyiv Polytechnic Institute" (KPI). The formal education deepened understanding of algorithms, data structures, distributed systems and software engineering principles that underpin large-scale data and AI platform design.
+
+### Master's in Civil Engineering — KNUCA (2013)
+Completed a Master's Degree in Civil Engineering at the Kyiv National University of Construction and Architecture (KNUCA). This early achievement laid the foundation for a structured, analytical approach to problem solving and project management that transferred directly into software engineering.
+
+## Notable Projects
+
+- **Multi-Agent RAG at Honeycomb Software**: Architected vectorisation pipelines and deployed multi-agent RAG systems for end-to-end AI data products, combining retrieval, reasoning and generation.
+- **ML Recommendation Platform at GR8 Tech**: Designed a machine-learning recommendation engine that increased user engagement and retention through personalised content delivery.
+- **AJNA Sports AI at SoftConstruct**: Led development of an AI-powered sports tracking system stitching two 8K camera feeds into panoramic video, using computer vision for automated ball, referee and player tracking.
+- **YAML DAG Factory at GR8 Tech**: Created a YAML-driven DAG factory enabling data scientists to author Airflow pipelines without writing code, accelerating experiment-to-production cycles.
+
+## Community & Memberships
+
+- Lens Champion — Kubernetes and cloud-native advocacy
+- AI Accelerator Institute — Member
+- BADideas.fund — Angel investor in early-stage CEE/CIS startups
+
+## Speaking & Collaboration
+
+Maksym is available as a conference speaker on topics including RAG system architecture, MLOps best practices, data platform design, AI engineering leadership and building AI teams. For speaking enquiries, reach out via email or LinkedIn.
+
+## Links
+
+- Site: https://mxvtk.dev
+- About: https://mxvtk.dev/about/
+- Blog: https://mxvtk.dev/blog/
+- Timeline: https://mxvtk.dev/timeline/
+- Resume: https://mxvtk.dev/resume/
+- RSS: https://mxvtk.dev/rss.xml
+- LinkedIn: https://linkedin.com/in/mvoitko
+- GitHub: https://github.com/mvoitko
+- StackOverflow: https://stackoverflow.com/users/5592286/max-voitko
+- X: https://x.com/mxvtk1
+- Threads: https://www.threads.com/@m_voitko
+- Instagram: https://instagram.com/@m_voitko
+- Telegram: https://t.me/forgottendatashadows
+- Email: max.voitko@gmail.com
+
+## Frequently Asked Questions
+
+### Who is Maksym Voitko?
+Maksym Voitko is a technology leader and staff-level engineer with over ten years of experience building data platforms and AI systems. He is joining Monday.com as an R&D Tech Lead in April 2026. Previously, he served as Head of Data & AI at Honeycomb Software, where he led teams building multi-agent RAG systems and vectorisation pipelines. His career has spanned quality assurance, test automation, data engineering, computer vision, machine learning and R&D leadership. He holds two master's degrees — one in Computer Engineering from KPI and one in Civil Engineering from KNUCA. He is also a Lens champion, a member of the AI Accelerator Institute and an angel investor at BADideas.fund.
+
+### What is his expertise in RAG systems?
+Maksym has hands-on experience designing and deploying multi-agent Retrieval-Augmented Generation (RAG) systems at production scale. At Honeycomb Software, he architected vectorisation pipelines for document processing and built multi-agent RAG architectures that combine retrieval, reasoning and generation capabilities. He works with LangChain, LlamaIndex, vector databases and embedding models, and has deep knowledge of retrieval-optimised architectures, chunking strategies and prompt engineering for RAG applications.
+
+### What is his experience with MLOps?
+Maksym built production MLOps infrastructure from scratch at GR8 Tech using Kubernetes, Kubeflow, Airflow, MLFlow and DVC. He created a YAML-driven DAG factory that enabled data scientists to author complex Airflow pipelines without writing code, significantly accelerating the experiment-to-production cycle. His MLOps experience covers model training orchestration, experiment tracking, model versioning, CI/CD for ML, feature stores and reproducible pipeline design across cloud environments (AWS, GCP).
+
+### Is he available as a conference speaker?
+Yes, Maksym is available as a conference speaker. His speaking topics include RAG system architecture, MLOps best practices, data platform design, AI engineering leadership, building and scaling AI teams, and the transition from individual contributor to engineering leader. For speaking enquiries, contact him via email at max.voitko@gmail.com or through LinkedIn at https://linkedin.com/in/mvoitko.
+
+### What companies has he worked at?
+Maksym has worked at Monday.com (R&D Tech Lead, from April 2026), Honeycomb Software (Head of Data & AI, 2023–2026), GR8 Tech (Research Development Team & Tech Lead, 2021–2023), SoftConstruct (Team Lead — AJNA Sports AI, 2020–2021), and glomex GmbH (Software Engineer / Data Engineer, 2018–2020). He also held roles as Senior Test Automation Engineer and QA earlier in his career (2015–2018). Additionally, he is an angel investor at BADideas.fund and a Lens champion.
