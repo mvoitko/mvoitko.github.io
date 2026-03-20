@@ -5,13 +5,14 @@ interface Props {
   description?: string;
   tags: string[];
   slug: string;
+  readingTime?: number;
 }
-const { title, date, description, tags, slug } = Astro.props;
+const { title, date, description, tags, slug, readingTime } = Astro.props;
 const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 
 <a href={`/blog/${slug}/`} class="blog-card">
-  <div class="blog-card-date">{dateStr}</div>
+  <div class="blog-card-date">{dateStr}{readingTime && ` · ${readingTime} min read`}</div>
   <h3>{title}</h3>
   {description && <p>{description}</p>}
   {tags.length > 0 && (
