@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Resume — Maksym Voitko" description="Maksym Voitko's resume — staff engineer and AI leader with 10+ years in data engineering, MLOps, RAG systems, and computer vision." activeNav="resume">
+  <div class="resume-page">
   <div class="page-header">
     <h1 class="page-title">Resume</h1>
     <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener">Download PDF &darr;</a>
@@ -29,6 +30,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="skill-pill">Terraform</span>
             <span class="skill-pill">Helm</span>
             <span class="skill-pill">Docker</span>
+            <span class="skill-pill">ArgoCD</span>
           </div>
         </div>
         <div class="skill-group">
@@ -87,15 +89,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="role">
         <div class="role-header">
-          <h3>SoftConstruct &ndash; AJNA Sports AI</h3>
-          <span class="role-meta">Mar 2020 &ndash; Aug 2021</span>
+          <h3>Team Lead</h3>
+          <span class="role-meta">SoftConstruct &middot; Jan 2021 &ndash; Aug 2021</span>
         </div>
         <p>AJNA &ndash; an AI-powered augmented live video streaming tool that recognises the game flow of sporting events, provides advanced player tracking in live mode, and collects technical data to create new markets.</p>
         <ul role="list">
-          <li><strong>Team Lead (Jan 2021 &ndash; Aug 2021)</strong> &ndash; guided a team of 3 in implementing a broadcast video streaming service from a bespoke camera based on Nvidia Jetson; progressed from POC to first production release for live soccer broadcasts.</li>
+          <li>Guided a team of 3 in implementing a broadcast video streaming service from a bespoke camera based on Nvidia Jetson; progressed from POC to first production release for live soccer broadcasts.</li>
           <li>Implemented smooth PTZ frame transition algorithm for broadcast.</li>
           <li>Engineered real-time panorama stitching of dual 4K frames using OpenCV on CPU and GPU with CUDA, achieving 40% reduction in processing time.</li>
-          <li><strong>Software Engineer (Mar 2020 &ndash; Jan 2021)</strong> &ndash; moved the main post-processing video CV pipeline to Google Cloud services.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-header">
+          <h3>Senior Software Engineer</h3>
+          <span class="role-meta">SoftConstruct &middot; Mar 2020 &ndash; Jan 2021</span>
+        </div>
+        <ul role="list">
+          <li>Moved the main post-processing video CV pipeline to Google Cloud services.</li>
           <li>Designed and developed the first customer-facing statistics service.</li>
           <li>Improved CV video processing pipeline performance by 54% (99th percentile).</li>
         </ul>
@@ -103,15 +114,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="role">
         <div class="role-header">
-          <h3>glomex GmbH</h3>
-          <span class="role-meta">Jul 2017 &ndash; Mar 2020</span>
+          <h3>Software / Data Engineer</h3>
+          <span class="role-meta">glomex GmbH &middot; Aug 2018 &ndash; Mar 2020</span>
         </div>
         <ul role="list">
-          <li><strong>Software Engineer / Data Engineer (Aug 2018 &ndash; Mar 2020)</strong> &ndash; migrated data infrastructure from Data Warehouse to Data Lake.</li>
+          <li>Migrated data infrastructure from Data Warehouse to Data Lake.</li>
           <li>Implemented real-time data ingest flow with AWS Kinesis, processing 10,000+ data points per second and reducing latency by 60%.</li>
           <li>Developed an NLP articles category classifier, reducing content categorisation time by 70%.</li>
           <li>Improved data infrastructure, reducing service latency 3&times; from 9s to under 2s.</li>
-          <li><strong>Test Automation Engineer (Jul 2017 &ndash; Aug 2018)</strong> &ndash; refactored test automation framework, saving 25% maintenance time. Trained and mentored 2 new team members.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-header">
+          <h3>Senior Test Automation Engineer</h3>
+          <span class="role-meta">glomex GmbH &middot; Jul 2017 &ndash; Aug 2018</span>
+        </div>
+        <ul role="list">
+          <li>Refactored test automation framework, saving 25% maintenance time.</li>
+          <li>Trained and mentored 2 new team members.</li>
         </ul>
       </div>
 
@@ -141,18 +162,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section>
       <h2>Contact</h2>
       <p>
-        <a href="mailto:max.voitko@gmail.com">max.voitko@gmail.com</a> &middot;
         <a href="https://linkedin.com/in/mvoitko" target="_blank" rel="noopener">LinkedIn</a> &middot;
         <a href="https://github.com/mvoitko" target="_blank" rel="noopener">GitHub</a> &middot;
         <a href="https://stackoverflow.com/users/5592286/max-voitko" target="_blank" rel="noopener">StackOverflow</a>
       </p>
     </section>
   </article>
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .resume-page {
     max-width: 800px;
+    margin: 0 auto;
     padding-top: calc(64px + 4rem);
     padding-bottom: 6rem;
   }
@@ -260,7 +282,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   @media (max-width: 768px) {
-    main { padding-top: calc(64px + 2rem); }
+    .resume-page { padding-top: calc(64px + 2rem); }
     .role { padding: 1.25rem; }
   }
 </style>

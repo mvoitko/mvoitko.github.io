@@ -9,6 +9,7 @@ const hasPosts = posts.length > 0;
 ---
 
 <BaseLayout title="Blog — Maksym Voitko" description="Thoughts on AI engineering, data platforms, MLOps, and technology leadership by Maksym Voitko." activeNav="blog">
+  <div class="blog-page">
   <div class="page-header">
     <h1 class="page-title">Blog</h1>
     <p>Thoughts on data engineering, AI, and technology leadership.</p>
@@ -32,11 +33,13 @@ const hasPosts = posts.length > 0;
       <p>Posts coming soon. Subscribe via <a href="/rss.xml">RSS</a> to get notified.</p>
     </div>
   )}
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .blog-page {
     max-width: 800px;
+    margin: 0 auto;
     padding-top: calc(64px + 4rem);
     padding-bottom: 6rem;
   }
@@ -73,6 +76,6 @@ const hasPosts = posts.length > 0;
   .empty-state a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
-    main { padding-top: calc(64px + 2rem); }
+    .blog-page { padding-top: calc(64px + 2rem); }
   }
 </style>

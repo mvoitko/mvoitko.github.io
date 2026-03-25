@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Speaking — Maksym Voitko" description="Talk topics, speaker bios, and booking info for Maksym Voitko — AI, data engineering, and engineering leadership." activeNav="speaking">
+  <div class="speaking-page">
   <div class="page-header">
     <h1>I Speak About <span class="highlight">AI &amp; Data</span></h1>
   </div>
@@ -93,11 +94,13 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
       <a class="btn btn-primary" href="mailto:max.voitko@gmail.com?subject=Speaking%20Invitation">Invite me to speak &rarr;</a>
     </section>
   </article>
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .speaking-page {
     max-width: 800px;
+    margin: 0 auto;
     padding-top: calc(64px + 4rem);
     padding-bottom: 6rem;
   }
@@ -236,7 +239,7 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
   }
 
   @media (max-width: 768px) {
-    main { padding-top: calc(64px + 2rem); }
+    .speaking-page { padding-top: calc(64px + 2rem); }
     .talk { padding: 1.25rem; }
     .bio-card { padding: 1.25rem; }
     .bio-text { padding: 0.75rem; font-size: 0.78rem; }

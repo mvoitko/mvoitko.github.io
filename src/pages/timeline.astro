@@ -16,6 +16,7 @@ const renderedEvents = await Promise.all(
 ---
 
 <BaseLayout title="Timeline — Maksym Voitko" description="Maksym Voitko's career journey — 10+ years building data platforms, ML systems, and engineering teams." activeNav="timeline">
+  <div class="timeline-page">
   <div class="page-header">
     <h1 class="page-title">My <span class="highlight">Timeline</span></h1>
     <p>A journey through career milestones, education, and life events.</p>
@@ -35,11 +36,13 @@ const renderedEvents = await Promise.all(
       </TimelineEvent>
     ))}
   </div>
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .timeline-page {
     max-width: 900px;
+    margin: 0 auto;
     padding-top: calc(64px + 4rem);
     padding-bottom: 6rem;
   }
@@ -79,7 +82,7 @@ const renderedEvents = await Promise.all(
   }
 
   @media (max-width: 768px) {
-    main { padding-top: calc(64px + 2rem); }
+    .timeline-page { padding-top: calc(64px + 2rem); }
     .page-header { margin-bottom: 2.5rem; }
     .timeline::before { left: 1.5rem; }
   }
