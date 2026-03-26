@@ -9,7 +9,7 @@
   </p>
   <div class="hero-ctas">
     <a class="btn btn-primary" href="/speaking/">invite me to speak &rarr;</a>
-    <a class="btn btn-secondary" href="/blog/">read the blog</a>
+    <a class="btn btn-primary btn-muted" href="/blog/">read my blog &rarr;</a>
     <a class="btn btn-ghost" href="/timeline/">view my journey</a>
   </div>
 </section>
@@ -77,6 +77,13 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+  }
+  .btn-muted {
+    opacity: 0.5;
+    transition: opacity 0.25s, box-shadow 0.25s;
+  }
+  .btn-muted:hover {
+    opacity: 1;
   }
 
   @media (max-width: 768px) {

@@ -1,0 +1,57 @@
+---
+---
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-content">
+      <div class="cta-prefix">&gt; speaking_invite.send()</div>
+      <h2>Got a conference, podcast or event? <span class="highlight">Let's talk.</span></h2>
+      <p>I speak about AI in production, MLOps under real constraints, and building engineering teams that ship. Happy to join meetups, panels, or keynotes — in person or remote.</p>
+    </div>
+    <a class="btn btn-primary" href="/speaking/">invite me to speak &rarr;</a>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 6rem) 4rem;
+  }
+  .cta-inner {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .cta-prefix {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .cta-content h2 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .cta-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 600px;
+  }
+  @media (max-width: 768px) {
+    .cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

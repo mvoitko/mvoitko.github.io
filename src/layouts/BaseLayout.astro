@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CtaBanner from '../components/CtaBanner.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -22,6 +23,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <meta name="author" content="Maksym Voitko" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="author" href="https://mxvtk.dev/about/" />
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl.href} />
@@ -137,6 +139,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <main id="main-content">
       <slot />
     </main>
+    <CtaBanner />
     <Footer />
     <script>
       document.querySelector('.theme-toggle')?.addEventListener('click', () => {
