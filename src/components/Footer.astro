@@ -6,7 +6,7 @@ import { displayLinks } from '../data/social-links';
   <div class="footer-icons">
     {displayLinks.map(link => (
       <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name} title={link.name}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
       </a>
     ))}
   </div>

@@ -8,7 +8,7 @@ const skills = ['Python', 'Go', 'AWS', 'GCP', 'Kubernetes', 'PyTorch', 'LangChai
 <BentoCard span={5}>
   <div class="card-header"><span class="card-icon">&#9881;</span><h3>Tech Stack</h3></div>
   <p>The tools I reach for most often.</p>
-  <div class="skills-grid">
-    {skills.map(skill => <SkillPill name={skill} />)}
-  </div>
+  <ul class="skills-grid" role="list">
+    {skills.map(skill => <li><SkillPill name={skill} /></li>)}
+  </ul>
 </BentoCard>

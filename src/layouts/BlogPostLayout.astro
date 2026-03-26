@@ -11,27 +11,29 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
 ---
 
 <BaseLayout title={`${title} — Maksym Voitko`} description={title} activeNav="blog">
-  <article class="post">
-    <header class="post-header">
-      <a href="/blog/" class="back-link">&larr; back to blog</a>
-      <h1>{title}</h1>
-      <div class="post-meta">
-        <time datetime={date.toISOString()}>{dateStr}</time>
-        {tags.length > 0 && (
-          <div class="post-tags">
-            {tags.map(tag => <span class="post-tag">{tag}</span>)}
-          </div>
-        )}
+  <div class="post-page">
+    <article class="post">
+      <header class="post-header">
+        <a href="/blog/" class="back-link">&larr; back to blog</a>
+        <h1>{title}</h1>
+        <div class="post-meta">
+          <time datetime={date.toISOString()}>{dateStr}</time>
+          {tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map(tag => <span class="post-tag">{tag}</span>)}
+            </div>
+          )}
+        </div>
+      </header>
+      <div class="post-content">
+        <slot />
       </div>
-    </header>
-    <div class="post-content">
-      <slot />
-    </div>
-  </article>
+    </article>
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .post-page {
     max-width: 750px;
     padding-top: calc(64px + 3rem);
     padding-bottom: 6rem;
@@ -155,6 +157,6 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   }
 
   @media (max-width: 768px) {
-    main { padding-top: calc(64px + 2rem); }
+    .post-page { padding-top: calc(64px + 2rem); }
   }
 </style>
