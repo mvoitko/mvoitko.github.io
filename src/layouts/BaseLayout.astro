@@ -19,7 +19,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' gc.zgo.at; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://mxvtk.goatcounter.com" />
     <meta name="description" content={description} />
     <meta name="author" content="Maksym Voitko" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -150,5 +150,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
         try { localStorage.setItem('theme', next); } catch (e) {}
       });
     </script>
+    <script data-goatcounter="https://mxvtk.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>
