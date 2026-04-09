@@ -1,5 +1,5 @@
 ---
-date: 2021-01-01
+date: 2021-08-01
 title: Research Development Team & Tech Lead at GR8 Tech
 category: career
 tags: [ML, MLOps, leadership]
