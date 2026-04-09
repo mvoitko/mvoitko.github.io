@@ -24,7 +24,7 @@
   --bg-card: #111923;
   --bg-card-hover: #162030;
   --text: #E6E6E6;
-  --text-muted: #8B949E;
+  --text-muted: #9DA5AD;
   --accent: #00FF88;
   --accent-dim: rgba(0, 255, 136, 0.1);
   --accent-border: rgba(0, 255, 136, 0.2);
@@ -36,9 +36,22 @@
   --life: #FF6C9F;
   --font-mono: 'Fira Code', monospace;
   --font-sans: 'Inter', -apple-system, sans-serif;
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.85rem;
+  --text-base: 0.95rem;
+  --text-lg: 1.05rem;
+  --text-xl: 1.2rem;
+  /* Radius scale */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
   --radius: 16px;
-  --radius-sm: 10px;
-  --transition: 0.25s;
+  --radius-pill: 9999px;
+  /* Timing */
+  --transition: 0.2s;
+  /* Surfaces */
+  --bg-subtle: rgba(255, 255, 255, 0.04);
+  --bg-inset: rgba(0, 0, 0, 0.15);
 }
 
 /* ── Light Theme ── */
@@ -58,6 +71,8 @@
   --career: #00875A;
   --education: #3B6FD4;
   --life: #D4457A;
+  --bg-subtle: rgba(0, 0, 0, 0.04);
+  --bg-inset: rgba(0, 0, 0, 0.06);
 }
 
 /* ── Base ── */
@@ -87,14 +102,14 @@ body {
   transform: translateX(-50%);
   z-index: 200;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   padding: 0.75rem 1.5rem;
   background: var(--accent);
   color: var(--bg);
   font-weight: 600;
   border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: top 0.2s;
+  transition: top var(--transition);
 }
 .skip-to-content:focus {
   top: 1rem;
@@ -135,7 +150,7 @@ main {
 }
 .section-banner-prefix {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--accent);
   margin-bottom: 1rem;
 }
@@ -148,7 +163,7 @@ main {
   margin-bottom: 1rem;
 }
 .section-banner-content p {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   color: var(--text-muted);
   line-height: 1.7;
   max-width: 600px;
@@ -163,7 +178,7 @@ main {
 /* ── Buttons ── */
 .btn {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-sm);
   text-decoration: none;
@@ -200,11 +215,34 @@ main {
   border-color: var(--accent-border);
   color: var(--accent);
 }
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.btn:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+.btn .arrow {
+  display: inline-block;
+  transition: transform var(--transition);
+}
+.btn:hover .arrow {
+  transform: translateX(3px);
+}
+@keyframes btn-glow-pulse {
+  0% { box-shadow: 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 30px var(--accent-glow); }
+  100% { box-shadow: 0 0 24px var(--accent-glow); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn-primary:hover { animation: btn-glow-pulse 0.6s ease-out; }
+}
 
 /* ── Section Label ── */
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -258,7 +296,7 @@ main {
   color: var(--text);
 }
 .bento-card p {
-  font-size: 0.88rem;
+  font-size: var(--text-base);
   color: var(--text-muted);
   line-height: 1.6;
 }
@@ -279,13 +317,13 @@ main {
 }
 .social-link {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   padding: 0.4rem 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: var(--text-muted);
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all var(--transition);
 }
 .social-link:hover {
   border-color: var(--accent);
@@ -303,12 +341,18 @@ main {
 }
 .skill-pill {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   padding: 0.35rem 0.7rem;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--accent-dim);
   color: var(--accent);
   border: 1px solid var(--accent-border);
+  transition: all var(--transition);
+  cursor: default;
+}
+.skill-pill:hover {
+  box-shadow: 0 0 8px var(--accent-glow);
+  transform: translateY(-1px);
 }
 
 /* ── Utilities ── */
@@ -319,6 +363,95 @@ main {
   letter-spacing: -0.03em;
 }
 .highlight { color: var(--accent); }
+
+/* ── Shared Utilities ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.card-hover { transition: all var(--transition); }
+.card-hover:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+}
+.list-prefixed { list-style: none; padding: 0; }
+.list-prefixed li {
+  padding-left: 1.25rem;
+  position: relative;
+}
+.list-prefixed li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+.view-all-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+.view-all-link:hover { opacity: 0.8; }
+.back-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: color var(--transition);
+}
+.back-link:hover { color: var(--accent); }
+
+/* ── Entrance Animations ── */
+@keyframes bento-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bento-card {
+    animation: bento-enter 0.5s ease-out both;
+  }
+  .bento-card:nth-child(1) { animation-delay: 0ms; }
+  .bento-card:nth-child(2) { animation-delay: 80ms; }
+  .bento-card:nth-child(3) { animation-delay: 160ms; }
+  .bento-card:nth-child(4) { animation-delay: 240ms; }
+  .bento-card:nth-child(5) { animation-delay: 320ms; }
+  .bento-card:nth-child(6) { animation-delay: 400ms; }
+  .bento-card:nth-child(7) { animation-delay: 480ms; }
+}
+
+/* ── Scroll Reveals ── */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Theme Transition ── */
+body,
+.bento-card,
+.section-banner-inner {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
@@ -336,7 +469,7 @@ main {
   .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 1; }
   .bento-card { padding: 1.5rem; }
   .bento { margin-bottom: 3rem; }
-  .btn { font-size: 0.8rem; padding: 0.65rem 1.25rem; }
+  .btn { font-size: var(--text-sm); padding: 0.65rem 1.25rem; min-height: 44px; }
 }
 
 /* ── Reduced Motion ── */

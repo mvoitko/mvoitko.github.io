@@ -35,7 +35,7 @@ if (import.meta.env.DEV && allPosts.length > 0 && !hasContent) {
       <p>Writing about RAG systems, MLOps under constraints, and the messy middle between demo and production. First posts shipping soon.</p>
     </div>
   )}
-  <a href="/blog/" class="view-all-link">View all posts &rarr;</a>
+  {hasContent && <a href="/blog/" class="view-all-link">View all posts <span class="arrow">&rarr;</span></a>}
 </BentoCard>
 
 <style>
@@ -46,17 +46,17 @@ if (import.meta.env.DEV && allPosts.length > 0 && !hasContent) {
   .blog-preview-item:last-child { border-bottom: none; }
   .post-date {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     color: var(--text-muted);
   }
   .post-title {
     font-family: var(--font-mono);
-    font-size: 0.88rem;
+    font-size: var(--text-base);
     color: var(--text);
     margin: 0.25rem 0;
   }
   .post-excerpt {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
   }
   .blog-preview-link {
@@ -64,27 +64,17 @@ if (import.meta.env.DEV && allPosts.length > 0 && !hasContent) {
     color: inherit;
     display: block;
   }
-  .view-all-link {
-    display: inline-block;
-    margin-top: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent);
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .view-all-link:hover { opacity: 0.8; }
   .coming-soon {
     margin-top: 1rem;
   }
   .prompt {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--accent);
   }
   .coming-soon p {
     margin-top: 0.5rem;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
   }
 </style>

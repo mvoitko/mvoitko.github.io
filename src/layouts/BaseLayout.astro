@@ -144,13 +144,51 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <CtaBanner />
     <Footer />
     <script>
-      document.querySelector('.theme-toggle')?.addEventListener('click', () => {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
-      });
+      function initThemeToggle() {
+        const toggle = document.querySelector('.theme-toggle') as HTMLButtonElement | null;
+        if (!toggle) return;
+
+        // Set initial aria-pressed based on current theme
+        const initial = document.documentElement.getAttribute('data-theme');
+        toggle.setAttribute('aria-pressed', initial === 'light' ? 'true' : 'false');
+
+        toggle.addEventListener('click', () => {
+          const html = document.documentElement;
+          const current = html.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-theme', next);
+          toggle.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+
+          // Rotate the icon
+          const icon = toggle.querySelector('.icon-dark, .icon-light') as HTMLElement | null;
+          const visible = next === 'light'
+            ? toggle.querySelector('.icon-light') as HTMLElement | null
+            : toggle.querySelector('.icon-dark') as HTMLElement | null;
+          if (visible) {
+            visible.style.transform = 'rotate(180deg)';
+            setTimeout(() => { visible.style.transform = ''; }, 300);
+          }
+
+          try { localStorage.setItem('theme', next); } catch (e) {}
+        });
+      }
+
+      initThemeToggle();
+      document.addEventListener('astro:after-swap', initThemeToggle);
+    </script>
+    <script is:inline>
+      // Scroll reveal observer
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+      }
     </script>
     <script data-goatcounter="https://mxvtk.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>

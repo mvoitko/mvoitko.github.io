@@ -6,16 +6,17 @@ import BentoCard from './BentoCard.astro';
   <div class="role-tag">r&amp;d tech lead</div>
   <h3>About Me</h3>
   <p>Started in civil engineering, ended up leading AI teams. 10+ years across data platforms, computer vision, RAG systems, and MLOps – always at the seam where architecture meets delivery. Less benchmark theater, more engineering under constraints.</p>
+  <a href="/about/" class="view-all-link">more about me <span class="arrow">&rarr;</span></a>
 </BentoCard>
 
 <style>
   .role-tag {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 0.3rem 0.6rem;
     background: var(--accent-dim);
     color: var(--accent);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     display: inline-block;
     margin-bottom: 1rem;
   }

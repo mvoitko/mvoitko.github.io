@@ -8,10 +8,12 @@
     I design AI systems that survive production, build teams that multiply talent, and write about the messy middle where engineering meets reality. R&amp;D Tech Lead at <a href="https://monday.com" target="_blank" rel="noopener noreferrer" class="monday-link">Monday.com</a>.
   </p>
   <div class="hero-ctas">
-    <a class="btn btn-primary" href="/speaking/">invite me to speak &rarr;</a>
-    <a class="btn btn-primary btn-muted" href="/blog/">read my blog &rarr;</a>
+    <a class="btn btn-primary" href="/speaking/">invite me to speak <span class="arrow">&rarr;</span></a>
     <a class="btn btn-ghost" href="/timeline/">view my journey</a>
   </div>
+  <a href="#at-a-glance" class="scroll-hint" aria-label="Scroll to content">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
 </section>
 
 <style>
@@ -57,7 +59,7 @@
     margin-bottom: 1.5rem;
   }
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: var(--text-xl);
     color: var(--text-muted);
     max-width: 560px;
     line-height: 1.7;
@@ -70,7 +72,7 @@
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 0.2em;
-    transition: color 0.2s;
+    transition: color var(--transition);
   }
   .monday-link:hover { color: var(--accent); text-decoration-thickness: 2px; }
   .hero-ctas {
@@ -78,12 +80,25 @@
     gap: 1rem;
     flex-wrap: wrap;
   }
-  .btn-muted {
-    opacity: 0.5;
-    transition: opacity 0.25s, box-shadow 0.25s;
+  .scroll-hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    transition: color var(--transition);
   }
-  .btn-muted:hover {
-    opacity: 1;
+  .scroll-hint:hover {
+    color: var(--accent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-hint svg {
+      animation: bounce 2s infinite;
+    }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
   }
 
   @media (max-width: 768px) {

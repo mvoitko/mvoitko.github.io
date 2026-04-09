@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Resume — Maksym Voitko" description="Maksym Voitko's resume — staff engineer and AI leader with 10+ years in data engineering, MLOps, RAG systems, and computer vision." activeNav="resume">
   <div class="resume-page">
+  <a href="/" class="back-link">&larr; home</a>
   <div class="page-header">
     <h1 class="page-title">Resume</h1>
     <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener">Download PDF &darr;</a>
@@ -53,6 +54,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section>
       <h2>Experience</h2>
+      <p class="section-crosslink"><a href="/timeline/">See the full visual timeline <span class="arrow">&rarr;</span></a></p>
 
       <div class="role">
         <div class="role-header">
@@ -204,7 +206,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .resume h2 {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     color: var(--accent);
     text-transform: uppercase;
@@ -214,7 +216,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-bottom: 1px solid var(--border);
   }
   .resume p {
-    font-size: 0.92rem;
+    font-size: var(--text-base);
     color: var(--text);
     line-height: 1.7;
   }
@@ -233,7 +235,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .skill-group h3 {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-sm);
     color: var(--text);
     margin-bottom: 0.5rem;
     font-weight: 500;
@@ -245,7 +247,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-radius: var(--radius);
     padding: 1.5rem;
     margin-bottom: 1rem;
-    transition: all 0.3s;
+    transition: all var(--transition);
   }
   .role:hover {
     background: var(--bg-card-hover);
@@ -256,14 +258,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .role-header h3 {
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     font-weight: 600;
     color: var(--text);
     margin-bottom: 0.25rem;
   }
   .role-meta {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     color: var(--text-muted);
   }
   .role ul {
@@ -271,7 +273,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 0;
   }
   .role li {
-    font-size: 0.88rem;
+    font-size: var(--text-base);
     color: var(--text);
     line-height: 1.65;
     padding: 0.25rem 0;
@@ -284,12 +286,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     left: 0;
     color: var(--accent);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
   .role li strong { color: var(--text); }
   .role p {
-    font-size: 0.88rem;
+    font-size: var(--text-base);
     line-height: 1.65;
+  }
+
+  .section-crosslink {
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+  .section-crosslink a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .section-crosslink a:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {

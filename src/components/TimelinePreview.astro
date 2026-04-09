@@ -43,7 +43,7 @@ const hasEvents = events.length > 0;
     background: var(--accent-border);
   }
   .timeline-preview li {
-    font-size: 0.82rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
     padding: 0.4rem 0;
     position: relative;
@@ -63,17 +63,7 @@ const hasEvents = events.length > 0;
   .year {
     font-family: var(--font-mono);
     color: var(--accent);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     margin-right: 0.4rem;
   }
-  .view-all-link {
-    display: inline-block;
-    margin-top: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent);
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .view-all-link:hover { opacity: 0.8; }
 </style>

@@ -10,7 +10,7 @@ const { date, title, category, tags } = Astro.props;
 const dateLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 ---
 
-<div class="tl-event" data-category={category}>
+<div class="tl-event" data-category={category} data-reveal>
   <div class="tl-content">
     <div class="tl-date">
       {dateLabel}
@@ -44,7 +44,7 @@ const dateLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'nume
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.5rem;
-    transition: all 0.3s;
+    transition: all var(--transition);
   }
   .tl-content:hover {
     background: var(--bg-card-hover);
@@ -56,21 +56,22 @@ const dateLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'nume
     position: absolute;
     left: 50%;
     top: 1.5rem;
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: var(--bg);
     border: 3px solid var(--career);
     transform: translateX(-50%);
     z-index: 2;
-    box-shadow: 0 0 12px var(--accent-glow);
+    --dot-color: var(--career);
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--dot-color);
   }
-  .tl-dot.education { border-color: var(--education); box-shadow: 0 0 12px rgba(108, 159, 255, 0.15); }
-  .tl-dot.life { border-color: var(--life); box-shadow: 0 0 12px rgba(255, 108, 159, 0.15); }
+  .tl-dot.education { border-color: var(--education); --dot-color: var(--education); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--dot-color); }
+  .tl-dot.life { border-color: var(--life); --dot-color: var(--life); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--dot-color); }
 
   .tl-date {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     color: var(--accent);
     margin-bottom: 0.6rem;
     display: flex;
@@ -80,9 +81,9 @@ const dateLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'nume
 
   .tl-category {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 0.15rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
@@ -92,14 +93,14 @@ const dateLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'nume
 
   .tl-content h3 {
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: var(--text);
     line-height: 1.4;
   }
   .tl-body {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--text);
     line-height: 1.65;
   }
@@ -112,10 +113,10 @@ const dateLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'nume
   }
   .tl-tag {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.04);
+    border-radius: var(--radius-xs);
+    background: var(--bg-subtle);
     color: var(--text-muted);
     border: 1px solid var(--border);
   }

@@ -1,21 +1,23 @@
 ---
 ---
 
-<section class="section-banner">
+<section class="section-banner" data-reveal>
   <div class="section-banner-inner">
     <div class="section-banner-content">
       <div class="section-banner-prefix">&gt; newsletter.subscribe()</div>
       <h2>Stay in the <span class="highlight">loop.</span></h2>
-      <p>I write about AI in production, MLOps under constraints, and what it actually takes to ship ML systems. No spam, unsubscribe anytime.</p>
+      <p>Occasional deep dives on shipping AI to production &mdash; RAG architectures, MLOps patterns, and lessons from building data teams. One email per month at most.</p>
     </div>
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/mxvtk"
       method="post"
       class="newsletter-form"
     >
-      <input type="email" name="email" placeholder="your@email.com" required />
-      <button type="submit" class="btn btn-primary">subscribe &rarr;</button>
+      <label for="newsletter-email" class="sr-only">Email address</label>
+      <input type="email" name="email" id="newsletter-email" placeholder="your@email.com" required />
+      <button type="submit" class="btn btn-primary">subscribe <span class="arrow">&rarr;</span></button>
     </form>
+    <p class="form-note">No spam, unsubscribe anytime.</p>
   </div>
 </section>
 
@@ -30,7 +32,7 @@
   .newsletter-form input {
     width: 280px;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     padding: 0.75rem 1rem;
     background: var(--bg);
     color: var(--text);
@@ -44,6 +46,11 @@
   }
   .newsletter-form input::placeholder {
     color: var(--text-muted);
+  }
+  .form-note {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: 0.5rem;
   }
   @media (max-width: 768px) {
     .newsletter-form {

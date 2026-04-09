@@ -54,16 +54,17 @@ const categories = ['all', 'career', 'education', 'life'];
   }
   .filter-btn {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
+    font-size: var(--text-xs);
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: transparent;
     color: var(--text-muted);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition);
   }
   .filter-btn:hover { border-color: var(--accent-border); color: var(--text); }
+  .filter-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .filter-btn.active {
     background: var(--accent-dim);
     border-color: var(--accent);

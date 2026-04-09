@@ -8,39 +8,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h1>I Speak About <span class="highlight">AI &amp; Data</span></h1>
   </div>
 
+  <div class="booking-bar">
+    Available for conferences, podcasts, and meetups. <a href="mailto:max.voitko@gmail.com?subject=Speaking%20Invitation" class="booking-link">Get in touch <span class="arrow">&rarr;</span></a>
+  </div>
+
   <article class="speaking">
     <section>
       <h2>Talk Topics</h2>
 
-      <div class="talk">
+      <div class="talk" data-reveal>
         <div class="talk-header">
           <h3>Building Multi-Agent RAG Systems in Production</h3>
         </div>
         <p>How do you go from a proof-of-concept chatbot to an enterprise-grade retrieval-augmented generation system? This talk walks through designing vectorisation pipelines, choosing retrieval strategies (dense, sparse, hybrid), and orchestrating multiple specialised agents with LangChain and LlamaIndex. I cover the hard lessons learned shipping multi-agent RAG at scale &mdash; from chunking trade-offs and embedding model selection to guardrails, evaluation frameworks, and the operational patterns that keep production AI reliable.</p>
       </div>
 
-      <div class="talk">
+      <div class="talk" data-reveal>
         <div class="talk-header">
           <h3>Zero to MLOps: Building ML Infrastructure from Scratch</h3>
         </div>
         <p>Most ML teams start with notebooks and good intentions. This talk is about what comes next: standing up production ML infrastructure on Kubernetes with Kubeflow, orchestrating training and feature pipelines through Airflow, versioning data and models with DVC, and the YAML DAG factory pattern that lets data scientists ship pipelines without writing boilerplate code. I share the architecture decisions, tooling trade-offs, and cultural shifts that turned a scrappy data team into a self-service ML platform.</p>
       </div>
 
-      <div class="talk">
+      <div class="talk" data-reveal>
         <div class="talk-header">
           <h3>From QA to Head of AI: The Non-Linear Engineering Career</h3>
         </div>
         <p>My career started in quality assurance, moved through test automation and back-end engineering, took a detour into computer vision, and landed at leading AI teams. This talk is about the power of non-linear career paths &mdash; how switching domains forces you to learn faster, why breadth of experience makes you a better technical leader, and how to navigate the uncertainty of reinventing yourself every few years. Practical advice for engineers who feel stuck in a single lane.</p>
       </div>
 
-      <div class="talk">
+      <div class="talk" data-reveal>
         <div class="talk-header">
           <h3>AI-Powered Computer Vision in Sports Broadcasting</h3>
         </div>
         <p>The AJNA system stitches two 4K camera feeds into a single panoramic video and uses computer vision to track players, measure ball speed, and analyse team formations &mdash; all in real time, without human operators. This talk covers the end-to-end pipeline: camera calibration and image stitching, object detection and tracking models, the engineering challenges of processing high-resolution video at broadcast latency, and how we built a system that turns raw footage into structured sports analytics.</p>
       </div>
 
-      <div class="talk">
+      <div class="talk" data-reveal>
         <div class="talk-header">
           <h3>Leading AI Teams: Building Cross-Functional Engineering Culture</h3>
         </div>
@@ -51,27 +55,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section>
       <h2>Speaker Bio</h2>
       <p class="bio-intro">Copy-paste versions for event organisers. Pick the length that fits your programme.</p>
+      <p class="bio-intro">For my full professional background, see my <a href="/cv/">resume</a>.</p>
 
-      <div class="bio-card">
+      <div class="bio-card" data-reveal>
         <div class="bio-header">
           <h3>Short Bio</h3>
           <span class="bio-length">~50 words</span>
+          <button class="copy-btn" aria-label="Copy bio to clipboard">copy</button>
         </div>
         <div class="bio-text">Maksym Voitko is a technology leader and staff-level engineer with over ten years of experience in AI, data engineering and back-end development. He is an R&amp;D Tech Lead at Monday.com, where he works on reporting infrastructure at scale. Previously, he built multi-agent RAG systems, MLOps platforms, and AI-powered computer vision products across multiple industries.</div>
       </div>
 
-      <div class="bio-card">
+      <div class="bio-card" data-reveal>
         <div class="bio-header">
           <h3>Medium Bio</h3>
           <span class="bio-length">~100 words</span>
+          <button class="copy-btn" aria-label="Copy bio to clipboard">copy</button>
         </div>
         <div class="bio-text">Maksym Voitko is a technology leader and staff-level engineer with over ten years of experience spanning AI, data engineering and back-end development. He is an R&amp;D Tech Lead at Monday.com, working on the Reporting &amp; Widgets team. Previously, as Head of Data &amp; AI at Honeycomb Software, he led a cross-functional team building end-to-end data and AI products, including multi-agent RAG systems and vectorisation pipelines. Earlier, he designed ML recommendation platforms, built MLOps infrastructure from scratch with Kubernetes and Kubeflow, and led the AJNA sports AI system &mdash; a 4K computer vision platform for real-time player and ball tracking. Maksym holds a Master&rsquo;s in Computer Engineering from KPI, Kyiv.</div>
       </div>
 
-      <div class="bio-card">
+      <div class="bio-card" data-reveal>
         <div class="bio-header">
           <h3>Long Bio</h3>
           <span class="bio-length">~200 words</span>
+          <button class="copy-btn" aria-label="Copy bio to clipboard">copy</button>
         </div>
         <div class="bio-text">Maksym Voitko is a technology leader and staff-level engineer with over ten years of experience in AI, data engineering and back-end development. He is an R&amp;D Tech Lead at Monday.com, where he works on the Reporting &amp; Widgets team tackling widget governance, scaling infrastructure, and performance &mdash; bringing deep expertise in building data platforms and AI systems from the ground up.
 
@@ -81,17 +89,17 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
       </div>
     </section>
 
-    <section>
-      <h2>Past Talks</h2>
-      <div class="talk placeholder">
-        <p>Upcoming talks will be listed here.</p>
-      </div>
-    </section>
-
     <section class="cta-section">
       <h2>Get in Touch</h2>
       <p>Interested in having me speak at your event, conference, or podcast?</p>
-      <a class="btn btn-primary" href="mailto:max.voitko@gmail.com?subject=Speaking%20Invitation">Invite me to speak &rarr;</a>
+      <a class="btn btn-primary" href="mailto:max.voitko@gmail.com?subject=Speaking%20Invitation">Invite me to speak <span class="arrow">&rarr;</span></a>
+    </section>
+
+    <section>
+      <h2>Past Talks</h2>
+      <div class="talk placeholder" data-reveal>
+        <p>No recorded talks yet &mdash; but I am actively seeking speaking opportunities. If you&rsquo;d like me to present at your event, reach out above.</p>
+      </div>
     </section>
   </article>
   </div>
@@ -120,12 +128,34 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
     letter-spacing: -0.03em;
   }
 
+  .booking-bar {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .booking-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
   .speaking section {
     margin-bottom: 3rem;
   }
   .speaking h2 {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     color: var(--accent);
     text-transform: uppercase;
@@ -135,7 +165,7 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
     border-bottom: 1px solid var(--border);
   }
   .speaking p {
-    font-size: 0.92rem;
+    font-size: var(--text-base);
     color: var(--text);
     line-height: 1.7;
   }
@@ -147,7 +177,7 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
     border-radius: var(--radius);
     padding: 1.5rem;
     margin-bottom: 1rem;
-    transition: all 0.3s;
+    transition: all var(--transition);
   }
   .talk:hover {
     background: var(--bg-card-hover);
@@ -158,12 +188,12 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
   }
   .talk-header h3 {
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     font-weight: 600;
     color: var(--text);
   }
   .talk p {
-    font-size: 0.88rem;
+    font-size: var(--text-base);
     color: var(--text-muted);
     line-height: 1.65;
   }
@@ -174,14 +204,14 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
   .talk.placeholder p {
     color: var(--text-muted);
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   /* ── Bio Cards ── */
   .bio-intro {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    font-size: 0.88rem;
+    font-size: var(--text-base);
   }
   .bio-card {
     background: var(--bg-card);
@@ -189,7 +219,7 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
     border-radius: var(--radius);
     padding: 1.5rem;
     margin-bottom: 1rem;
-    transition: all 0.3s;
+    transition: all var(--transition);
   }
   .bio-card:hover {
     background: var(--bg-card-hover);
@@ -203,26 +233,41 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
   }
   .bio-header h3 {
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     font-weight: 600;
     color: var(--text);
   }
   .bio-length {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     color: var(--text-muted);
     background: var(--accent-dim);
     border: 1px solid var(--accent-border);
-    border-radius: 6px;
+    border-radius: var(--radius-xs);
     padding: 0.2rem 0.5rem;
+  }
+  .copy-btn {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-sm);
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .copy-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
   }
   .bio-text {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
     line-height: 1.7;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.15);
+    background: var(--bg-inset);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     white-space: pre-wrap;
@@ -242,7 +287,30 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
     .speaking-page { padding-top: calc(64px + 2rem); }
     .talk { padding: 1.25rem; }
     .bio-card { padding: 1.25rem; }
-    .bio-text { padding: 0.75rem; font-size: 0.78rem; }
+    .bio-text { padding: 0.75rem; font-size: var(--text-sm); }
     .bio-header { flex-wrap: wrap; gap: 0.5rem; }
   }
 </style>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const card = btn.closest('.bio-card');
+      const text = card?.querySelector('.bio-text')?.textContent?.trim();
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'copied!';
+        setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+      } catch {
+        const range = document.createRange();
+        const bioText = card.querySelector('.bio-text');
+        if (bioText) {
+          range.selectNodeContents(bioText);
+          window.getSelection()?.removeAllRanges();
+          window.getSelection()?.addRange(range);
+        }
+      }
+    });
+  });
+</script>

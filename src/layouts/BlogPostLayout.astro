@@ -41,10 +41,10 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
 
   .back-link {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color var(--transition);
     display: inline-block;
     margin-bottom: 2rem;
   }
@@ -68,7 +68,7 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   }
   .post-meta time {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
   }
   .post-tags {
@@ -78,16 +78,16 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   }
   .post-tag {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     background: var(--accent-dim);
     color: var(--accent);
     border: 1px solid var(--accent-border);
   }
 
   .post-content {
-    font-size: 1.05rem;
+    font-size: var(--text-lg);
     line-height: 1.85;
     color: var(--text);
   }
@@ -100,7 +100,7 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   }
   .post-content :global(h3) {
     font-family: var(--font-mono);
-    font-size: 1.05rem;
+    font-size: var(--text-lg);
     font-weight: 600;
     color: var(--text);
     margin: 2rem 0 0.75rem;
@@ -121,10 +121,10 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   }
   .post-content :global(code) {
     font-family: var(--font-mono);
-    font-size: 0.88em;
+    font-size: var(--text-base);
     background: var(--bg-card);
     padding: 0.15rem 0.4rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     border: 1px solid var(--border);
   }
   .post-content :global(pre) {
