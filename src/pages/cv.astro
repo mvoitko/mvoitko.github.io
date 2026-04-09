@@ -188,7 +188,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .resume-page {
     max-width: 800px;
     margin: 0 auto;
-    padding-top: calc(64px + 4rem);
+    padding-top: calc(var(--header-height, 64px) + 4rem);
     padding-bottom: 6rem;
   }
 
@@ -309,7 +309,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   @media (max-width: 768px) {
-    .resume-page { padding-top: calc(64px + 2rem); }
+    .resume-page { padding-top: calc(var(--header-height, 64px) + 2rem); }
     .role { padding: 1.25rem; }
   }
 </style>

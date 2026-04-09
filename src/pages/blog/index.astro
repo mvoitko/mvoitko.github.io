@@ -40,7 +40,7 @@ const hasPosts = posts.length > 0;
   .blog-page {
     max-width: 800px;
     margin: 0 auto;
-    padding-top: calc(64px + 4rem);
+    padding-top: calc(var(--header-height, 64px) + 4rem);
     padding-bottom: 6rem;
   }
 
@@ -76,6 +76,6 @@ const hasPosts = posts.length > 0;
   .empty-state a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
-    .blog-page { padding-top: calc(64px + 2rem); }
+    .blog-page { padding-top: calc(var(--header-height, 64px) + 2rem); }
   }
 </style>

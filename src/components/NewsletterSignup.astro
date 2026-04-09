@@ -16,8 +16,9 @@
       <label for="newsletter-email" class="sr-only">Email address</label>
       <input type="email" name="email" id="newsletter-email" placeholder="your@email.com" required />
       <button type="submit" class="btn btn-primary">subscribe <span class="arrow">&rarr;</span></button>
+      <p class="form-note">No spam, unsubscribe anytime.</p>
+      <p class="form-status" aria-live="polite"></p>
     </form>
-    <p class="form-note">No spam, unsubscribe anytime.</p>
   </div>
 </section>
 
@@ -50,7 +51,17 @@
   .form-note {
     font-size: var(--text-xs);
     color: var(--text-muted);
-    margin-top: 0.5rem;
+  }
+  .form-status {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    min-height: 1.2em;
+  }
+  .form-status.success {
+    color: var(--accent);
+  }
+  .form-status.error {
+    color: var(--error);
   }
   @media (max-width: 768px) {
     .newsletter-form {
@@ -61,3 +72,55 @@
     }
   }
 </style>
+
+<script>
+  function initNewsletter() {
+    const form = document.querySelector('.newsletter-form') as HTMLFormElement | null;
+    if (!form || form.dataset.initialized) return;
+    form.dataset.initialized = 'true';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const status = form.querySelector('.form-status');
+      const email = form.querySelector('input[type="email"]');
+      if (!btn || !status || !email) return;
+
+      (btn as HTMLButtonElement).disabled = true;
+      btn.textContent = 'sending...';
+      status.textContent = '';
+      status.className = 'form-status';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form))
+        });
+
+        if (res.ok || res.status === 303) {
+          status.textContent = '> subscribed. check your inbox.';
+          status.classList.add('success');
+          (email as HTMLInputElement).value = '';
+        } else {
+          status.textContent = '> something went wrong. try again.';
+          status.classList.add('error');
+        }
+      } catch {
+        status.textContent = '> connection failed. try again.';
+        status.classList.add('error');
+      }
+
+      (btn as HTMLButtonElement).disabled = false;
+      btn.textContent = '';
+      btn.append('subscribe ');
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow';
+      arrow.textContent = '\u2192';
+      btn.appendChild(arrow);
+    });
+  }
+
+  initNewsletter();
+  document.addEventListener('astro:after-swap', initNewsletter);
+</script>

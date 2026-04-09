@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="404 — mxvtk.dev" description="Page not found">
+  <section class="error-page">
+    <div class="terminal-block">
+      <span class="prompt">&gt; curl mxvtk.dev/...</span>
+      <h1>404</h1>
+      <p class="message">page not found.</p>
+      <p class="hint">The page you're looking for doesn't exist or has been moved.</p>
+      <a class="btn btn-primary" href="/">back to home <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page {
+    min-height: calc(100dvh - var(--header-height, 64px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--header-height, 64px) + 2rem) 2rem 2rem;
+  }
+  .terminal-block {
+    text-align: center;
+  }
+  .prompt {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+  .message {
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .hint {
+    font-size: var(--text-base);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

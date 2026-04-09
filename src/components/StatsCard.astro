@@ -3,11 +3,11 @@
 
 <div class="bento-card span-4 stats-card">
   <div class="stat">
-    <div class="stat-number">10+</div>
+    <div class="stat-number" data-count="10">10+</div>
     <div class="stat-label">years in tech</div>
   </div>
   <div class="stat">
-    <div class="stat-number">15+</div>
+    <div class="stat-number" data-count="15">15+</div>
     <div class="stat-label">engineers led</div>
   </div>
 </div>
@@ -34,3 +34,33 @@
     color: var(--text-muted);
   }
 </style>
+
+<script>
+  function initStatsAnimation() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const card = document.querySelector('.stats-card');
+    if (!card) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      card.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count, 10);
+        if (!Number.isFinite(target) || target <= 0) return;
+        const duration = 2000;
+        const start = performance.now();
+        el.textContent = '0+';
+        function step(now) {
+          const t = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - t, 4);
+          el.textContent = Math.round(target * ease) + '+';
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+    observer.observe(card);
+  }
+
+  initStatsAnimation();
+  document.addEventListener('astro:after-swap', initStatsAnimation);
+</script>

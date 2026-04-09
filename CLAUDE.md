@@ -36,7 +36,7 @@ mvoitko.github.io/
 
 ## Technology Stack
 
-- **Astro 5** — static site generator, no JS framework
+- **Astro 6** — static site generator, no JS framework
 - **TypeScript** — strict mode
 - **CSS** — global design tokens (custom properties) + Astro scoped styles per component
 - **Content Collections** — Markdown files with Zod-validated frontmatter for timeline and blog
@@ -45,6 +45,7 @@ mvoitko.github.io/
 - **@astrojs/sitemap** — automatic sitemap
 - **pnpm** — package manager (faster than npm, content-addressable store)
 - **GitHub Actions** — build in node:22-alpine container, deploy to GitHub Pages
+- **Dependency overrides** — `pnpm.overrides` in package.json pins transitive deps (vite, defu) to patched versions. Check Dependabot alerts after Astro upgrades.
 
 ## Development
 
@@ -63,7 +64,7 @@ All design tokens live in `src/styles/global.css`:
 - **Typography**: Fira Code (mono/headings), Inter (sans/body) — self-hosted woff2 in `public/fonts/`
 - **Light theme**: defined in `[data-theme="light"]` block in global.css. Toggle persists to localStorage.
 - **Layout**: 12-column bento grid on home, vertical alternating timeline
-- **Responsive breakpoints**: 1024px (tablet → 6-col grid), 768px (mobile → 1-col), 400px (compact nav)
+- **Responsive breakpoints**: 1024px (tablet → 6-col grid), 768px (mobile → 1-col, hamburger nav)
 - **Category colors**: career `#00FF88`, education `#6C9FFF`, life `#FF6C9F`
 
 ## Content Collections
@@ -103,6 +104,11 @@ Only posts with `status: published` appear on the site.
 - **prefers-reduced-motion** — all animations must be wrapped. Check global.css and Hero.astro for patterns.
 - **Card headers** — use `.card-header` flex wrapper for inline icon + h3. Defined in global.css.
 - **Body text color** — use `--text` (not `--text-muted`) for long-form content (about, resume, blog posts).
+- **`backdrop-filter` gotcha** — creates a new containing block, breaking `position: fixed` on descendants. Always apply `backdrop-filter` to a `::before` pseudo-element instead of the parent.
+- **Container alignment** — all full-width sections (main, header, footer, section-banner) must share horizontal padding `clamp(1.5rem, 5vw, 6rem)` and effective max-width `1440px`. Header uses dynamic padding formula instead of max-width to keep background full-viewport.
+- **View transitions** — inline scripts that query DOM must register `astro:after-swap` listener to re-initialize. Pattern: wrap in named function, call it, then `document.addEventListener('astro:after-swap', fn)`.
+- **Typography tokens** — `--text-xs` (0.75rem), `--text-sm` (0.85rem), `--text-base` (0.95rem), `--text-lg` (1.05rem), `--text-xl` (1.2rem). Do not use hardcoded font sizes.
+- **Button variants** — `.btn-primary` (filled accent), `.btn-outline` (accent border, white text), `.btn-ghost` (muted border). All defined in global.css.
 
 ## Deployment
 

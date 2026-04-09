@@ -9,6 +9,7 @@
   </p>
   <div class="hero-ctas">
     <a class="btn btn-primary" href="/speaking/">invite me to speak <span class="arrow">&rarr;</span></a>
+    <a class="btn btn-outline" href="/blog/">read my blog <span class="arrow">&rarr;</span></a>
     <a class="btn btn-ghost" href="/timeline/">view my journey</a>
   </div>
   <a href="#at-a-glance" class="scroll-hint" aria-label="Scroll to content">
@@ -18,11 +19,11 @@
 
 <style>
   .hero {
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 64px;
+    padding-top: var(--header-height, 64px);
   }
   .hero-prefix {
     font-family: var(--font-mono);
@@ -102,7 +103,7 @@
   }
 
   @media (max-width: 768px) {
-    .hero { min-height: calc(100vh - 2rem); padding-top: 80px; }
+    .hero { min-height: calc(100dvh - 2rem); padding-top: calc(var(--header-height, 64px) + 1rem); }
     .hero-subtitle { font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; }
     .hero-ctas { flex-direction: column; gap: 0.75rem; }
     .hero-ctas a { text-align: center; }

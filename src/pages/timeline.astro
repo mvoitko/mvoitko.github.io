@@ -44,7 +44,7 @@ const renderedEvents = await Promise.all(
   .timeline-page {
     max-width: 900px;
     margin: 0 auto;
-    padding-top: calc(64px + 4rem);
+    padding-top: calc(var(--header-height, 64px) + 4rem);
     padding-bottom: 6rem;
   }
 
@@ -83,7 +83,7 @@ const renderedEvents = await Promise.all(
   }
 
   @media (max-width: 768px) {
-    .timeline-page { padding-top: calc(64px + 2rem); }
+    .timeline-page { padding-top: calc(var(--header-height, 64px) + 2rem); }
     .page-header { margin-bottom: 2.5rem; }
     .timeline::before { left: 1.5rem; }
   }

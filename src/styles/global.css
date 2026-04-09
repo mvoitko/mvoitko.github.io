@@ -18,6 +18,8 @@
 /* ── Reset ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+h1, h2, h3 { text-wrap: balance; }
+
 /* ── Design Tokens ── */
 :root {
   --bg: #0A0E14;
@@ -34,6 +36,7 @@
   --career: #00FF88;
   --education: #6C9FFF;
   --life: #FF6C9F;
+  --error: #FF6C6C;
   --font-mono: 'Fira Code', monospace;
   --font-sans: 'Inter', -apple-system, sans-serif;
   /* Typography scale */
@@ -52,6 +55,8 @@
   /* Surfaces */
   --bg-subtle: rgba(255, 255, 255, 0.04);
   --bg-inset: rgba(0, 0, 0, 0.15);
+  /* Layout */
+  --header-height: 64px;
 }
 
 /* ── Light Theme ── */
@@ -71,6 +76,7 @@
   --career: #00875A;
   --education: #3B6FD4;
   --life: #D4457A;
+  --error: #CC3333;
   --bg-subtle: rgba(0, 0, 0, 0.04);
   --bg-inset: rgba(0, 0, 0, 0.06);
 }
@@ -131,7 +137,7 @@ main {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 6rem) 2rem;
+  padding: 0 clamp(1.5rem, 5vw, 6rem) 2.5rem;
   box-sizing: border-box;
 }
 .section-banner-inner {
@@ -206,6 +212,15 @@ main {
   color: var(--accent);
   box-shadow: 0 0 16px rgba(0, 255, 136, 0.15);
 }
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+.btn-outline:hover {
+  background: var(--accent-dim);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
 .btn-ghost {
   background: transparent;
   color: var(--text-muted);
@@ -263,7 +278,7 @@ main {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 .bento-card {
   background: var(--bg-card);
@@ -375,6 +390,18 @@ main {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+/* Grain overlay — apply to sections needing texture */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
 .card-hover { transition: all var(--transition); }
 .card-hover:hover {
   background: var(--bg-card-hover);

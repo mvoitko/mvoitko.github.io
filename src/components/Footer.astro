@@ -16,8 +16,9 @@ import { displayLinks } from '../data/social-links';
 <style>
   footer {
     border-top: 1px solid var(--border);
-    padding: 3rem 0;
-    margin-top: 2rem;
+    padding: 3rem clamp(1.5rem, 5vw, 6rem);
+    max-width: 1440px;
+    margin: 2rem auto 0;
     text-align: center;
   }
   footer p {
@@ -31,7 +32,7 @@ import { displayLinks } from '../data/social-links';
     gap: 1.25rem;
     margin-bottom: 1.25rem;
     flex-wrap: wrap;
-    padding: 0 1rem;
+    padding: 0;
   }
   .footer-icons a {
     color: var(--text-muted);
