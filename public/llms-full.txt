@@ -8,7 +8,7 @@ Maksym Voitko is a technology leader joining Monday.com as R&D Tech Lead (April 
 
 His career has evolved from quality assurance and test automation into data engineering, computer vision, machine learning and eventually leading research and development in AI. He combines deep technical expertise with hands-on leadership experience across startups and scale-ups.
 
-Beyond engineering, Maksym is a Lens champion advocating for Kubernetes and cloud-native best practices, a member of the AI Accelerator Institute, and an angel investor at BADideas.fund supporting early-stage CEE/CIS startups. He runs a Ukrainian-language Telegram channel sharing data and AI knowledge.
+Beyond engineering, Maksym is a Lens champion advocating for Kubernetes and cloud-native best practices and a member of the AI Accelerator Institute. He runs a Ukrainian-language Telegram channel sharing data and AI knowledge.
 
 Education: Master's in Computer Engineering from the National Technical University of Ukraine "Kyiv Polytechnic Institute" (KPI, 2018), Master's in Civil Engineering from Kyiv National University of Construction and Architecture (KNUCA, 2013).
 
@@ -31,9 +31,6 @@ Joining Monday.com as an R&D Tech Lead. This marks a new chapter where Maksym wi
 
 ### Lens Champion (December 2025)
 Recognised as a Lens champion, advocating for Kubernetes and cloud-native best practices within the developer community. This role involves mentoring other engineers on container orchestration, contributing to the open-source ecosystem and shaping the future of the Lens project. Kubernetes, Helm and cloud-native technologies have been central to Maksym's infrastructure work throughout his career.
-
-### Angel Investor — BADideas.fund (February 2024 – present)
-Started investing in early-stage CEE/CIS startups through BADideas.fund. This role broadens Maksym's perspective on emerging technologies and business models while allowing him to support and mentor the regional startup community. The investment focus spans AI, data and developer tooling companies in the Central and Eastern European ecosystem.
 
 ### Head of Data & AI — Honeycomb Software (July 2023 – March 2026)
 Led a cross-functional team of ML engineers, software engineers and DevOps engineers to build end-to-end data and AI products. Designed vectorisation pipelines for document processing and deployed multi-agent RAG systems that combined retrieval, reasoning and generation capabilities. The team built production-grade AI solutions including automated data extraction, intelligent search and conversational AI features. Technologies included Python, LangChain, LlamaIndex, FastAPI, Kubernetes, Docker, Redis and Elasticsearch.
@@ -72,7 +69,6 @@ Completed a Master's Degree in Civil Engineering at the Kyiv National University
 
 - Lens Champion — Kubernetes and cloud-native advocacy
 - AI Accelerator Institute — Member
-- BADideas.fund — Angel investor in early-stage CEE/CIS startups
 
 ## Speaking & Collaboration
 
@@ -98,7 +94,7 @@ Maksym is available as a conference speaker on topics including RAG system archi
 ## Frequently Asked Questions
 
 ### Who is Maksym Voitko?
-Maksym Voitko is a technology leader and staff-level engineer with over ten years of experience building data platforms and AI systems. He is joining Monday.com as an R&D Tech Lead in April 2026. Previously, he served as Head of Data & AI at Honeycomb Software, where he led teams building multi-agent RAG systems and vectorisation pipelines. His career has spanned quality assurance, test automation, data engineering, computer vision, machine learning and R&D leadership. He holds two master's degrees — one in Computer Engineering from KPI and one in Civil Engineering from KNUCA. He is also a Lens champion, a member of the AI Accelerator Institute and an angel investor at BADideas.fund.
+Maksym Voitko is a technology leader and staff-level engineer with over ten years of experience building data platforms and AI systems. He is joining Monday.com as an R&D Tech Lead in April 2026. Previously, he served as Head of Data & AI at Honeycomb Software, where he led teams building multi-agent RAG systems and vectorisation pipelines. His career has spanned quality assurance, test automation, data engineering, computer vision, machine learning and R&D leadership. He holds two master's degrees — one in Computer Engineering from KPI and one in Civil Engineering from KNUCA. He is also a Lens champion and a member of the AI Accelerator Institute.
 
 ### What is his expertise in RAG systems?
 Maksym has hands-on experience designing and deploying multi-agent Retrieval-Augmented Generation (RAG) systems at production scale. At Honeycomb Software, he architected vectorisation pipelines for document processing and built multi-agent RAG architectures that combine retrieval, reasoning and generation capabilities. He works with LangChain, LlamaIndex, vector databases and embedding models, and has deep knowledge of retrieval-optimised architectures, chunking strategies and prompt engineering for RAG applications.
@@ -110,4 +106,4 @@ Maksym built production MLOps infrastructure from scratch at GR8 Tech using Kube
 Yes, Maksym is available as a conference speaker. His speaking topics include RAG system architecture, MLOps best practices, data platform design, AI engineering leadership, building and scaling AI teams, and the transition from individual contributor to engineering leader. For speaking enquiries, contact him via email at max.voitko@gmail.com or through LinkedIn at https://linkedin.com/in/mvoitko.
 
 ### What companies has he worked at?
-Maksym has worked at Monday.com (R&D Tech Lead, from April 2026), Honeycomb Software (Head of Data & AI, 2023–2026), GR8 Tech (Research Development Team & Tech Lead, 2021–2023), SoftConstruct (Team Lead — AJNA Sports AI, 2020–2021), and glomex GmbH (Software Engineer / Data Engineer, 2018–2020). He also held roles as Senior Test Automation Engineer and QA earlier in his career (2015–2018). Additionally, he is an angel investor at BADideas.fund and a Lens champion.
+Maksym has worked at Monday.com (R&D Tech Lead, from April 2026), Honeycomb Software (Head of Data & AI, 2023–2026), GR8 Tech (Research Development Team & Tech Lead, 2021–2023), SoftConstruct (Team Lead — AJNA Sports AI, 2020–2021), and glomex GmbH (Software Engineer / Data Engineer, 2018–2020). He also held roles as Senior Test Automation Engineer and QA earlier in his career (2015–2018). He is also a Lens champion.
