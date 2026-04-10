@@ -5,10 +5,18 @@ import { displayLinks } from '../data/social-links';
 
 <BentoCard span={7} class="socials-card">
   <div class="card-header"><span class="card-icon">&#128279;</span><h3>Connect</h3></div>
-  <div class="socials-grid">
+
+  <div class="socials-bento">
     {displayLinks.map(link => (
-      <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name} title={link.name}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${link.name} — ${link.handle}`}
+        class:list={['social-tile', `span-${link.gridSpan ?? 1}`]}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width={link.gridSpan && link.gridSpan >= 2 ? '28' : '20'} height={link.gridSpan && link.gridSpan >= 2 ? '28' : '20'} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
+        <span class="tile-handle">{link.handle}</span>
       </a>
     ))}
   </div>
@@ -18,28 +26,68 @@ import { displayLinks } from '../data/social-links';
   .socials-card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
-  .socials-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+  .socials-bento {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
     margin-top: 1rem;
   }
-  .socials-grid a {
+
+  .social-tile {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
+    gap: 0.6rem;
+    padding: 0.85rem;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     color: var(--text-muted);
+    text-decoration: none;
     transition: all var(--transition);
   }
-  .socials-grid a:hover {
-    color: var(--accent);
+  .social-tile:hover {
     border-color: var(--accent-border);
+    background: var(--accent-dim);
     transform: translateY(-2px);
+  }
+  .social-tile:hover svg,
+  .social-tile:hover .tile-handle {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  .span-2 {
+    grid-column: span 2;
+    padding: 1.1rem;
+  }
+  .span-3 {
+    grid-column: span 3;
+    padding: 1.25rem;
+  }
+
+  .tile-handle {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    opacity: 0.6;
+    transition: all var(--transition);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .socials-bento {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .span-3 { grid-column: span 3; }
+    .span-2 { grid-column: span 2; }
+  }
+  @media (max-width: 480px) {
+    .socials-bento {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .span-3 { grid-column: span 2; }
+    .span-2 { grid-column: span 2; }
   }
 </style>
