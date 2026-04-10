@@ -1,24 +1,47 @@
 ---
 import BentoCard from './BentoCard.astro';
 import { displayLinks } from '../data/social-links';
+
+const featured = displayLinks.filter(l => l.featured);
+const compact = displayLinks.filter(l => !l.featured);
 ---
 
 <BentoCard span={7} class="socials-card">
   <div class="card-header"><span class="card-icon">&#128279;</span><h3>Connect</h3></div>
 
   <div class="socials-bento">
-    {displayLinks.map(link => (
-      <a
-        href={link.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${link.name} — ${link.handle}`}
-        class:list={['social-tile', `span-${link.gridSpan ?? 1}`]}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width={link.gridSpan && link.gridSpan >= 2 ? '28' : '20'} height={link.gridSpan && link.gridSpan >= 2 ? '28' : '20'} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
-        <span class="tile-handle">{link.handle}</span>
-      </a>
-    ))}
+    <div class="featured-row">
+      {featured.map(link => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${link.name} — ${link.handle}`}
+          class="social-tile featured"
+        >
+          <div class="tile-top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
+            <span class="tile-name">{link.name}</span>
+          </div>
+          {link.description && <span class="tile-desc">{link.description}</span>}
+        </a>
+      ))}
+    </div>
+
+    <div class="compact-row">
+      {compact.map(link => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${link.name} — ${link.handle}`}
+          class="social-tile compact"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={link.icon} />
+          <span class="tile-name">{link.name}</span>
+        </a>
+      ))}
+    </div>
   </div>
 </BentoCard>
 
@@ -28,17 +51,25 @@ import { displayLinks } from '../data/social-links';
     flex-direction: column;
   }
   .socials-bento {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 0.6rem;
     margin-top: 1rem;
   }
 
-  .social-tile {
-    display: flex;
-    align-items: center;
+  .featured-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
     gap: 0.6rem;
-    padding: 0.85rem;
+  }
+  .compact-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+  }
+
+  .social-tile {
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     color: var(--text-muted);
@@ -50,44 +81,60 @@ import { displayLinks } from '../data/social-links';
     background: var(--accent-dim);
     transform: translateY(-2px);
   }
-  .social-tile:hover svg,
-  .social-tile:hover .tile-handle {
+  .social-tile:hover .tile-name {
     color: var(--accent);
-    opacity: 1;
+    transition: color var(--transition);
   }
 
-  .span-2 {
-    grid-column: span 2;
+  /* Featured — vertical layout: icon+name top, description bottom */
+  .social-tile.featured {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
     padding: 1.1rem;
   }
-  .span-3 {
-    grid-column: span 3;
-    padding: 1.25rem;
+  .tile-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .tile-desc {
+    font-size: var(--text-xs);
+    opacity: 0.5;
   }
 
-  .tile-handle {
+  /* Compact — inline icon + name */
+  .social-tile.compact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .tile-name {
     font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    opacity: 0.6;
-    transition: all var(--transition);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 100%;
+  }
+  .social-tile.compact .tile-name {
+    font-size: var(--text-xs);
   }
 
   @media (max-width: 768px) {
-    .socials-bento {
+    .compact-row {
       grid-template-columns: repeat(3, 1fr);
     }
-    .span-3 { grid-column: span 3; }
-    .span-2 { grid-column: span 2; }
   }
   @media (max-width: 480px) {
-    .socials-bento {
+    .featured-row {
+      grid-template-columns: 1fr;
+    }
+    .compact-row {
       grid-template-columns: repeat(2, 1fr);
     }
-    .span-3 { grid-column: span 2; }
-    .span-2 { grid-column: span 2; }
   }
 </style>
