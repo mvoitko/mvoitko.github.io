@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="about-page">
     <article class="prose" aria-label="About Maksym Voitko">
       <a href="/" class="back-link">&larr; home</a>
-      <h1 class="page-title">About <span class="highlight">Me</span></h1>
+      <h1 class="page-title">About <span class="highlight">me</span></h1>
       <p data-reveal>
         Most people who end up leading AI teams started in computer science. I started by designing bridges. My first master's degree is in civil engineering from Kyiv National University of Construction and Architecture, and that background gave me something I still rely on every day: a systems-thinking instinct for how complex structures hold together under pressure.
       </p>
@@ -23,7 +23,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         From there I joined <strong>GR8 Tech</strong> as Research Development Team &amp; Tech Lead, where I designed a recommendation platform that measurably increased user engagement, built MLOps infrastructure from scratch with Kubernetes, Kubeflow, and Airflow, and created a YAML-driven DAG factory that let data scientists ship pipelines without writing code. At <strong>Honeycomb Software</strong> I was the first employee of what became the Data &amp; AI department – I built it from scratch, set up hiring, development, and performance processes, and grew the team to twelve engineers. As Head of Data &amp; AI I led that cross-functional group of ML, software, and DevOps engineers to ship end-to-end data and AI products – including vectorisation pipelines and multi-agent RAG systems that powered core product features. Now, as <strong>R&amp;D Tech Lead at <a href="https://monday.com" target="_blank" rel="noopener noreferrer">Monday.com</a></strong>, I work on the Reporting &amp; Widgets team, tackling widget governance, scaling reporting infrastructure, performance, and bringing AI into the product where it adds real value.
       </p>
 
-      <h2 data-reveal>What I <span class="highlight">talk about</span></h2>
+      <hr class="section-break" />
+      <h2 data-reveal>What I <span class="highlight">talk</span> about</h2>
       <ul>
         <li><strong>Production RAG &amp; multi-agent systems</strong> – architecture, evaluation, and the gap between demo and deployment</li>
         <li><strong>MLOps &amp; data platform design</strong> – building infrastructure that lets data scientists move fast without breaking things</li>
@@ -33,6 +34,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </ul>
       <p data-reveal><a href="/speaking/">See full talk descriptions and booking info <span class="arrow">&rarr;</span></a></p>
 
+      <hr class="section-break" />
       <p data-reveal>
         Outside of work, I am a <strong>Lens Champion</strong> in the Kubernetes ecosystem and a member of the <strong>AI Accelerator Institute</strong>. I run a Ukrainian-language Telegram channel <a href="https://t.me/forgottendatashadows" target="_blank" rel="noopener noreferrer"><strong>Тіні Забутих Даних</strong></a> about data and AI, and I am always looking for opportunities to mentor engineers and share what I have learned with the broader community.
       </p>
@@ -91,6 +93,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 0.3rem 0;
     padding-left: 1.25rem;
     position: relative;
+  }
+  .section-break {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 2.5rem 0;
   }
   .prose li::before {
     content: '>';

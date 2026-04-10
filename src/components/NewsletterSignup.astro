@@ -86,6 +86,21 @@
       const email = form.querySelector('input[type="email"]');
       if (!btn || !status || !email) return;
 
+      // Client-side validation before submit
+      const emailInput = email as HTMLInputElement;
+      if (!emailInput.value.trim()) {
+        status.textContent = '> enter your email address.';
+        status.className = 'form-status error';
+        emailInput.focus();
+        return;
+      }
+      if (!emailInput.validity.valid) {
+        status.textContent = '> invalid email format.';
+        status.className = 'form-status error';
+        emailInput.focus();
+        return;
+      }
+
       (btn as HTMLButtonElement).disabled = true;
       btn.textContent = 'sending...';
       status.textContent = '';

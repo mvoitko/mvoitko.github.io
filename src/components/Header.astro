@@ -43,7 +43,7 @@ const navItems = [
 
 <style>
   header {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-header);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 calc(max(0px, (100vw - 1440px) / 2) + clamp(1.5rem, 5vw, 6rem));
     height: var(--header-height, 64px);
@@ -168,7 +168,7 @@ const navItems = [
       height: 100dvh;
       padding-top: 5rem;
       background: var(--bg);
-      z-index: 99;
+      z-index: var(--z-mobile-nav);
       flex-direction: column;
       align-items: center;
       justify-content: center;

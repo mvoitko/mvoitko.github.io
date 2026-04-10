@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Speaking — Maksym Voitko" description="Talk topics, speaker bios, and booking info for Maksym Voitko — AI, data engineering, and engineering leadership." activeNav="speaking">
   <div class="speaking-page">
   <div class="page-header">
-    <h1>I Speak About <span class="highlight">AI &amp; Data</span></h1>
+    <h1>I speak about <span class="highlight">AI &amp; data</span></h1>
   </div>
 
   <div class="booking-bar">
@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <article class="speaking">
     <section>
-      <h2>Talk Topics</h2>
+      <h2>Talk topics</h2>
 
       <div class="talk" data-reveal>
         <div class="talk-header">
@@ -53,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <section>
-      <h2>Speaker Bio</h2>
+      <h2>Speaker bio</h2>
       <p class="bio-intro">Copy-paste versions for event organisers. Pick the length that fits your programme.</p>
       <p class="bio-intro">For my full professional background, see my <a href="/cv/">resume</a>.</p>
 
@@ -90,13 +90,13 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
     </section>
 
     <section class="cta-section">
-      <h2>Get in Touch</h2>
+      <h2>Get in touch</h2>
       <p>Interested in having me speak at your event, conference, or podcast?</p>
       <a class="btn btn-primary" href="mailto:max.voitko@gmail.com?subject=Speaking%20Invitation">Invite me to speak <span class="arrow">&rarr;</span></a>
     </section>
 
     <section>
-      <h2>Past Talks</h2>
+      <h2>Past talks</h2>
       <div class="talk placeholder" data-reveal>
         <p>No recorded talks yet &mdash; but I am actively seeking speaking opportunities. If you&rsquo;d like me to present at your event, reach out above.</p>
       </div>
@@ -260,6 +260,10 @@ Maksym also led the AJNA sports AI project at SoftConstruct, where his team buil
   .copy-btn:hover {
     background: var(--accent);
     color: var(--bg);
+  }
+  .copy-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
   .bio-text {
     font-family: var(--font-mono);

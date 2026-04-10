@@ -149,8 +149,10 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
     margin-bottom: 0.5rem;
   }
   .post-content :global(blockquote) {
-    border-left: 3px solid var(--accent);
-    padding-left: 1.25rem;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
     color: var(--text-muted);
     font-style: italic;
     margin: 1.5rem 0;

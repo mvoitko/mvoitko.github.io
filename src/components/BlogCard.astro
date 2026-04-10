@@ -10,7 +10,7 @@ const { title, date, description, tags, slug } = Astro.props;
 const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 
-<a href={`/blog/${slug}/`} class="blog-card">
+<a href={`/blog/${slug}/`} class="blog-card" data-reveal>
   <div class="blog-card-date">{dateStr}</div>
   <h3>{title}</h3>
   {description && <p>{description}</p>}

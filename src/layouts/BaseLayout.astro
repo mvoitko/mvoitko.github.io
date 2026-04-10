@@ -173,17 +173,26 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
       document.addEventListener('astro:after-swap', initThemeToggle);
     </script>
     <script is:inline>
-      // Scroll reveal observer
+      // Scroll reveal observer with staggered siblings
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
+        var revealDelay = 0;
+        var lastBatch = 0;
+        var observer = new IntersectionObserver(function(entries) {
+          var now = Date.now();
+          if (now - lastBatch > 300) revealDelay = 0;
+          lastBatch = now;
+          entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target);
+              var el = entry.target;
+              var delay = revealDelay;
+              el.style.transitionDelay = delay + 'ms';
+              el.classList.add('revealed');
+              revealDelay += 60;
+              observer.unobserve(el);
             }
           });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(function(el) { observer.observe(el); });
       }
     </script>
     <script data-goatcounter="https://mxvtk.goatcounter.com/count"
