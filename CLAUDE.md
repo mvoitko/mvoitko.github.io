@@ -60,12 +60,12 @@ pnpm install       # Install dependencies
 
 All design tokens live in `src/styles/global.css`:
 
-- **Dark theme**: background `#0A0E14`, cards `#111923`, accent `#00FF88`
+- **Dark theme**: background `#0A0E14`, cards `#111923`, accent `#00E87E`
 - **Typography**: Fira Code (mono/headings), Inter (sans/body) — self-hosted woff2 in `public/fonts/`
 - **Light theme**: defined in `[data-theme="light"]` block in global.css. Toggle persists to localStorage.
 - **Layout**: 12-column bento grid on home, vertical alternating timeline
 - **Responsive breakpoints**: 1024px (tablet → 6-col grid), 768px (mobile → 1-col, hamburger nav)
-- **Category colors**: career `#00FF88`, education `#6C9FFF`, life `#FF6C9F`
+- **Category colors**: career `#00E87E`, education `#6C9FFF`, life `#FF6C9F`
 
 ## Content Collections
 
@@ -107,7 +107,10 @@ Only posts with `status: published` appear on the site.
 - **`backdrop-filter` gotcha** — creates a new containing block, breaking `position: fixed` on descendants. Always apply `backdrop-filter` to a `::before` pseudo-element instead of the parent.
 - **Container alignment** — all full-width sections (main, header, footer, section-banner) must share horizontal padding `clamp(1.5rem, 5vw, 6rem)` and effective max-width `1440px`. Header uses dynamic padding formula instead of max-width to keep background full-viewport.
 - **View transitions** — inline scripts that query DOM must register `astro:after-swap` listener to re-initialize. Pattern: wrap in named function, call it, then `document.addEventListener('astro:after-swap', fn)`.
-- **Typography tokens** — `--text-xs` (0.75rem), `--text-sm` (0.85rem), `--text-base` (0.95rem), `--text-lg` (1.05rem), `--text-xl` (1.2rem). Do not use hardcoded font sizes.
+- **Typography tokens** — `--text-xs` (0.75rem), `--text-sm` (0.875rem), `--text-base` (1rem), `--text-lg` (1.25rem), `--text-xl` (1.5rem). Ratio ≥1.25. Do not use hardcoded font sizes.
+- **Spacing tokens** — `--space-xs` (0.25rem) through `--space-4xl` (6rem). Prefer semantic tokens for new code.
+- **Easing tokens** — `--ease-out` (expo deceleration), `--ease-in-out` (smooth). Use for entrance animations and scroll reveals.
+- **Shadow token** — `--shadow` is navy-tinted in dark theme, green-tinted in light. Use instead of `rgba(0,0,0,...)`.
 - **Button variants** — `.btn-primary` (filled accent), `.btn-outline` (accent border, white text), `.btn-ghost` (muted border). All defined in global.css.
 
 ## Deployment

@@ -2,37 +2,41 @@
 ---
 
 <div class="bento-card span-4 stats-card">
-  <div class="stat">
-    <div class="stat-number" data-count="10">10+</div>
-    <div class="stat-label">years in tech</div>
+  <div class="stat-line">
+    <span class="stat-value" data-count="10">10+</span>
+    <span class="stat-desc">years shipping production systems</span>
   </div>
-  <div class="stat">
-    <div class="stat-number" data-count="15">15+</div>
-    <div class="stat-label">engineers led</div>
+  <div class="stat-line">
+    <span class="stat-value" data-count="15">15+</span>
+    <span class="stat-desc">engineers hired, mentored &amp; led</span>
   </div>
 </div>
 
 <style>
   .stats-card {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
   }
-  .stat-number {
+  .stat-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+  .stat-value {
     font-family: var(--font-mono);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--accent);
     line-height: 1;
-    margin-bottom: 0.4rem;
     font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
   }
-  .stat-label {
-    font-family: var(--font-mono);
+  .stat-desc {
     font-size: var(--text-sm);
     color: var(--text-muted);
+    line-height: 1.4;
   }
 </style>
 
@@ -44,7 +48,7 @@
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
       observer.disconnect();
-      card.querySelectorAll('[data-count]').forEach(el => {
+      card.querySelectorAll('.stat-value[data-count]').forEach(el => {
         const target = parseInt(el.dataset.count, 10);
         if (!Number.isFinite(target) || target <= 0) return;
         const duration = 2000;

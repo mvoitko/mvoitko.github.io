@@ -27,9 +27,9 @@ Audit the site's Astro components and built HTML for WCAG AA compliance.
   - `--text` (#E6E6E6) on `--bg` (#0A0E14) — should pass
   - `--text-muted` (#8B949E) on `--bg` (#0A0E14) — verify
   - `--text-muted` (#8B949E) on `--bg-card` (#111923) — verify
-  - `--accent` (#00FF88) on `--bg` (#0A0E14) — verify
+  - `--accent` (#00E87E) on `--bg` (#0A0E14) — verify
   - `--accent` on `--accent-dim` backgrounds — verify
-  - Button text `--bg` (#0A0E14) on `--accent` (#00FF88) — verify
+  - Button text `--bg` (#0A0E14) on `--accent` (#00E87E) — verify
 
 ### 4. Keyboard Navigation
 - All interactive elements (links, buttons, filters) are focusable via Tab
