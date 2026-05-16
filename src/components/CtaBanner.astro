@@ -1,13 +1,57 @@
 ---
 ---
 
-<section class="section-banner" data-reveal>
-  <div class="section-banner-inner">
-    <div class="section-banner-content">
-      <div class="section-banner-prefix">&gt; speaking_invite.send()</div>
+<section class="cta-banner" data-reveal>
+  <div class="cta-banner-inner">
+    <div class="cta-banner-content">
       <h2>Got a conference, podcast or event? <span class="highlight">Let's talk.</span></h2>
-      <p>I speak about AI in production, MLOps under real constraints, and building engineering teams that ship. Happy to join meetups, panels, or keynotes — in person or remote.</p>
+      <p>I speak about AI in production, MLOps under real constraints, and building engineering teams that ship.</p>
     </div>
-    <a class="btn btn-primary" href="/speaking/">invite me to speak <span class="arrow">&rarr;</span></a>
+    <a class="btn btn-outline" href="/speaking/">invite me to speak <span class="arrow">&rarr;</span></a>
   </div>
 </section>
+
+<style>
+  .cta-banner {
+    width: 100%;
+    padding: 3rem clamp(1.5rem, 5vw, 6rem);
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-banner-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .cta-banner-content h2 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-banner-content p {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 550px;
+  }
+
+  .cta-banner .btn {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .cta-banner-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+</style>
