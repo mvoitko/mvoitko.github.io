@@ -182,45 +182,62 @@
     const hero = canvas.closest('.hero') as HTMLElement;
     if (!hero) return;
 
+    // Theme & color setup
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const accentHex = getComputedStyle(document.documentElement)
       .getPropertyValue('--accent').trim() || '#00E87E';
-    const ar = parseInt(accentHex.slice(1, 3), 16);
-    const ag = parseInt(accentHex.slice(3, 5), 16);
-    const ab = parseInt(accentHex.slice(5, 7), 16);
+    let ar = parseInt(accentHex.slice(1, 3), 16);
+    let ag = parseInt(accentHex.slice(3, 5), 16);
+    let ab = parseInt(accentHex.slice(5, 7), 16);
+    if (isNaN(ar) || isNaN(ag) || isNaN(ab)) { ar = 0; ag = 232; ab = 126; }
+    const accentRgb = ar + ',' + ag + ',' + ab;
 
+    // Theme-dependent opacity
     const CONN_ALPHA = isLight ? 0.08 : 0.15;
     const BASE_ALPHA = isLight ? 0.2 : 0.4;
     const CHAOTIC_ALPHA = isLight ? 0.2 : 0.45;
+
+    // Constants
     const TAU = Math.PI * 2;
-    let W = 0, H = 0, MID = 0;
     const dpr = Math.min(devicePixelRatio || 1, 2);
-    let ordered: {
-      x: number; y: number; homeX: number; homeY: number;
-      vx: number; vy: number; torn: number; healDelay: number;
-      neighbors: any[];
-    }[] = [];
-    let chaotic: { x: number; y: number; vx: number; vy: number }[] = [];
-    let all: { x: number; y: number }[] = [];
-    let surges: { x: number; y: number; radius: number; radiusSq: number; strength: number; speed: number; life: number }[] = [];
     const CONNECT = 65;
     const CONNECT_SQ = CONNECT * CONNECT;
     const MOUSE_R = 120;
     const MOUSE_R_SQ = MOUSE_R * MOUSE_R;
-    const BOUNDARY_SQ = 60 * 60;
-    const CASCADE_SQ = 35 * 35;
+    const BOUNDARY_R = 60;
+    const BOUNDARY_SQ = BOUNDARY_R * BOUNDARY_R;
+    const CASCADE_R = 35;
+    const CASCADE_SQ = CASCADE_R * CASCADE_R;
     const ALPHA_BUCKETS = 20;
+
+    // Pre-computed alpha LUT for connection lines
     const connAlphaStrings: string[] = [];
     for (let i = 0; i <= ALPHA_BUCKETS; i++) {
-      connAlphaStrings[i] = 'rgba(' + ar + ',' + ag + ',' + ab + ',' + (i / ALPHA_BUCKETS * CONN_ALPHA) + ')';
+      connAlphaStrings[i] = 'rgba(' + accentRgb + ',' + (i / ALPHA_BUCKETS * CONN_ALPHA) + ')';
     }
+
+    // Mutable state
+    let W = 0, H = 0, MID = 0;
     let mx = -1, my = -1;
     let surgeTimer = 0, nextSurge = 40;
     let rafId = 0;
-    let boundaryChaotic: typeof chaotic = [];
     let boundaryCount = 0;
 
-    let grid: Record<string, { x: number; y: number }[]> = {};
+    // Particle arrays
+    type OrderedParticle = {
+      x: number; y: number; homeX: number; homeY: number;
+      vx: number; vy: number; torn: number; healDelay: number;
+      neighbors: OrderedParticle[];
+    };
+    type ChaoticParticle = { x: number; y: number; vx: number; vy: number };
+    type Point = { x: number; y: number };
+
+    let ordered: OrderedParticle[] = [];
+    let chaotic: ChaoticParticle[] = [];
+    let all: Point[] = [];
+    let surges: { x: number; y: number; radius: number; radiusSq: number; strength: number; speed: number; life: number }[] = [];
+    let boundaryChaotic: ChaoticParticle[] = [];
+    let grid: Record<string, Point[]> = {};
 
     function buildGrid() {
       grid = {};
@@ -235,7 +252,10 @@
       W = window.innerWidth;
       const heroRect = hero.getBoundingClientRect();
       H = heroRect.height;
-      if (W === 0 || H === 0) return;
+      if (W === 0 || H === 0) {
+        requestAnimationFrame(resize);
+        return;
+      }
 
       wrap.style.left = `${-heroRect.left}px`;
       wrap.style.width = `${W}px`;
@@ -248,11 +268,13 @@
       initParticles();
       surges.length = 0;
       surgeTimer = 0;
+      if (!rafId) rafId = requestAnimationFrame(tick);
     }
 
     function initParticles() {
       ordered = [];
       chaotic = [];
+      boundaryChaotic.length = 0;
       const spacing = 24;
 
       // Ordered grid on LEFT (behind hero text)
@@ -272,10 +294,10 @@
         }
       }
 
+      // Link each particle to its 8 grid neighbors
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          const idx = r * cols + c;
-          const nbrs: typeof ordered = [];
+          const nbrs: OrderedParticle[] = [];
           for (let dr = -1; dr <= 1; dr++) {
             for (let dc = -1; dc <= 1; dc++) {
               if (dr === 0 && dc === 0) continue;
@@ -285,22 +307,23 @@
               }
             }
           }
-          ordered[idx].neighbors = nbrs;
+          ordered[r * cols + c].neighbors = nbrs;
         }
       }
 
       // Chaotic particles on RIGHT (filling open space)
+      const chaoticWidth = W - MID;
       const count = Math.floor(ordered.length * 1.2);
       for (let i = 0; i < count; i++) {
         chaotic.push({
-          x: MID + Math.random() * (W - MID),
+          x: MID + Math.random() * chaoticWidth,
           y: Math.random() * H,
           vx: (Math.random() - 0.5) * 2,
           vy: (Math.random() - 0.5) * 2
         });
       }
 
-      all = (ordered as { x: number; y: number }[]).concat(chaotic);
+      all = (ordered as Point[]).concat(chaotic);
     }
 
     function spawnSurge() {
@@ -322,17 +345,16 @@
       surges.push({ x: MID + 10, y: Math.random() * H, radius, radiusSq: radius * radius, strength, speed, life: 1.0 });
     }
 
-    function drawConn(a: { x: number; y: number }, b: { x: number; y: number }) {
+    function drawConn(a: Point, b: Point) {
       const dx = a.x - b.x, dy = a.y - b.y;
       const distSq = dx * dx + dy * dy;
-      if (distSq < CONNECT_SQ) {
-        const dist = Math.sqrt(distSq);
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = connAlphaStrings[(1 - dist / CONNECT) * ALPHA_BUCKETS | 0];
-        ctx.stroke();
-      }
+      if (distSq >= CONNECT_SQ) return;
+      const bucket = (1 - Math.sqrt(distSq) / CONNECT) * ALPHA_BUCKETS | 0;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = connAlphaStrings[bucket];
+      ctx.stroke();
     }
 
     function tick() {
@@ -419,8 +441,7 @@
             const dx = o.x - c.x, dy = o.y - c.y;
             const distSq = dx * dx + dy * dy;
             if (distSq < BOUNDARY_SQ) {
-              const dist = Math.sqrt(distSq);
-              const str = (1 - dist / 60) * 0.04;
+              const str = (1 - Math.sqrt(distSq) / BOUNDARY_R) * 0.04;
               o.vx += c.vx * str;
               o.vy += c.vy * str;
               o.torn = Math.min(1, o.torn + str * 0.3);
@@ -451,8 +472,7 @@
             const dx = o.x - n.x, dy = o.y - n.y;
             const distSq = dx * dx + dy * dy;
             if (distSq < CASCADE_SQ) {
-              const dist = Math.sqrt(distSq);
-              const spread = (1 - dist / 35) * o.torn * 0.02;
+              const spread = (1 - Math.sqrt(distSq) / CASCADE_R) * o.torn * 0.02;
               n.torn = Math.min(1, n.torn + spread);
               n.vx += o.vx * spread * 0.5;
               n.vy += o.vy * spread * 0.5;
@@ -485,40 +505,36 @@
       for (const key in grid) {
         const cell = grid[key];
         const sep = key.indexOf('|');
-        const cx = parseInt(key.substring(0, sep));
-        const cy = parseInt(key.substring(sep + 1));
+        const cx = +key.substring(0, sep);
+        const cy = +key.substring(sep + 1);
 
+        // Intra-cell connections
         for (let i = 0; i < cell.length; i++) {
           for (let j = i + 1; j < cell.length; j++) {
             drawConn(cell[i], cell[j]);
           }
         }
 
-        const neighbors = [
-          grid[(cx + 1) + '|' + cy],
-          grid[cx + '|' + (cy + 1)],
-          grid[(cx + 1) + '|' + (cy + 1)],
-          grid[(cx - 1) + '|' + (cy + 1)]
-        ];
-        for (let a = 0; a < 4; a++) {
-          const adj = neighbors[a];
-          if (!adj) continue;
-          for (let i = 0; i < cell.length; i++) {
-            for (let j = 0; j < adj.length; j++) {
-              drawConn(cell[i], adj[j]);
-            }
-          }
-        }
+        // Adjacent cell connections (right, below, diagonal-right-below, diagonal-left-below)
+        const adj0 = grid[(cx + 1) + '|' + cy];
+        const adj1 = grid[cx + '|' + (cy + 1)];
+        const adj2 = grid[(cx + 1) + '|' + (cy + 1)];
+        const adj3 = grid[(cx - 1) + '|' + (cy + 1)];
+        if (adj0) for (let i = 0; i < cell.length; i++) for (let j = 0; j < adj0.length; j++) drawConn(cell[i], adj0[j]);
+        if (adj1) for (let i = 0; i < cell.length; i++) for (let j = 0; j < adj1.length; j++) drawConn(cell[i], adj1[j]);
+        if (adj2) for (let i = 0; i < cell.length; i++) for (let j = 0; j < adj2.length; j++) drawConn(cell[i], adj2[j]);
+        if (adj3) for (let i = 0; i < cell.length; i++) for (let j = 0; j < adj3.length; j++) drawConn(cell[i], adj3[j]);
       }
 
       // Draw ordered particles (left, behind text)
       for (let i = 0; i < ordered.length; i++) {
         const o = ordered[i];
-        const alpha = BASE_ALPHA + o.torn * 0.5;
-        const rad = 1.3 + o.torn * 1.2;
-        const pr = ar + (220 - ar) * o.torn * 0.5 | 0;
-        const pg = ag + (255 - ag) * o.torn * 0.1 | 0;
-        const pb = ab + (220 - ab) * o.torn * 0.4 | 0;
+        const t = o.torn;
+        const alpha = BASE_ALPHA + t * 0.5;
+        const rad = 1.3 + t * 1.2;
+        const pr = ar + (220 - ar) * t * 0.5 | 0;
+        const pg = ag + (255 - ag) * t * 0.1 | 0;
+        const pb = ab + (220 - ab) * t * 0.4 | 0;
         ctx.beginPath();
         ctx.arc(o.x, o.y, rad, 0, TAU);
         ctx.fillStyle = 'rgba(' + pr + ',' + pg + ',' + pb + ',' + alpha + ')';
@@ -526,7 +542,7 @@
       }
 
       // Draw chaotic particles (right, open space)
-      ctx.fillStyle = 'rgba(' + ar + ',' + ag + ',' + ab + ',' + CHAOTIC_ALPHA + ')';
+      ctx.fillStyle = 'rgba(' + accentRgb + ',' + CHAOTIC_ALPHA + ')';
       for (let i = 0; i < chaotic.length; i++) {
         ctx.beginPath();
         ctx.arc(chaotic[i].x, chaotic[i].y, 1.8, 0, TAU);
@@ -536,17 +552,15 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    function onMove(e: MouseEvent) {
+    function setPointer(clientX: number, clientY: number) {
       const rect = wrap.getBoundingClientRect();
-      mx = e.clientX - rect.left;
-      my = e.clientY - rect.top;
+      mx = clientX - rect.left;
+      my = clientY - rect.top;
     }
+    function onMove(e: MouseEvent) { setPointer(e.clientX, e.clientY); }
     function onLeave() { mx = -1; my = -1; }
     function onTouch(e: TouchEvent) {
-      if (!e.touches.length) return;
-      const rect = wrap.getBoundingClientRect();
-      mx = e.touches[0].clientX - rect.left;
-      my = e.touches[0].clientY - rect.top;
+      if (e.touches.length) setPointer(e.touches[0].clientX, e.touches[0].clientY);
     }
 
     hero.addEventListener('mousemove', onMove);
@@ -557,26 +571,33 @@
     const ro = new ResizeObserver(resize);
     ro.observe(hero);
     resize();
-    rafId = requestAnimationFrame(tick);
 
     cleanup = () => {
       cancelAnimationFrame(rafId);
+      rafId = 0;
       ro.disconnect();
       hero.removeEventListener('mousemove', onMove);
       hero.removeEventListener('mouseleave', onLeave);
       hero.removeEventListener('touchmove', onTouch);
       hero.removeEventListener('touchend', onLeave);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       wrap.style.left = '';
       wrap.style.width = '';
     };
   }
 
   // Theme toggle observer — reinitialize on dark/light switch
+  let themeRafPending = false;
   function setupThemeObserver() {
     if (themeObserver) return;
     themeObserver = new MutationObserver(() => {
-      if (cleanup) { cleanup(); cleanup = null; }
-      initEntropy();
+      if (themeRafPending) return;
+      themeRafPending = true;
+      requestAnimationFrame(() => {
+        themeRafPending = false;
+        if (cleanup) { cleanup(); cleanup = null; }
+        initEntropy();
+      });
     });
     themeObserver.observe(document.documentElement, {
       attributes: true,
@@ -599,17 +620,19 @@
     viewportMql.addEventListener('change', handleViewportChange);
   }
 
-  initEntropy();
-  setupThemeObserver();
-  setupViewportRecovery();
-  document.addEventListener('astro:after-swap', () => {
+  function bootstrap() {
     initEntropy();
     setupThemeObserver();
     setupViewportRecovery();
-  });
-  document.addEventListener('astro:before-swap', () => {
+  }
+
+  function teardown() {
     if (cleanup) { cleanup(); cleanup = null; }
     if (themeObserver) { themeObserver.disconnect(); themeObserver = null; }
     if (viewportMql) { viewportMql.removeEventListener('change', handleViewportChange); viewportMql = null; }
-  });
+  }
+
+  bootstrap();
+  document.addEventListener('astro:after-swap', bootstrap);
+  document.addEventListener('astro:before-swap', teardown);
 </script>
