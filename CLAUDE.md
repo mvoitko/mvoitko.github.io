@@ -104,9 +104,10 @@ Only posts with `status: published` appear on the site.
 - **prefers-reduced-motion** — all animations must be wrapped. Check global.css and Hero.astro for patterns.
 - **Card headers** — use `.card-header` flex wrapper for inline icon + h3. Defined in global.css.
 - **Body text color** — use `--text` (not `--text-muted`) for long-form content (about, resume, blog posts).
-- **`backdrop-filter` gotcha** — creates a new containing block, breaking `position: fixed` on descendants. Always apply `backdrop-filter` to a `::before` pseudo-element instead of the parent.
+- **`backdrop-filter` gotcha** — creates a new containing block, breaking `position: fixed` on descendants. Always apply `backdrop-filter` to a `::before` pseudo-element instead of the parent. The parent needs `isolation: isolate` so `z-index: -1` on the pseudo stays within its stacking context.
 - **Container alignment** — all full-width sections (main, header, footer, section-banner) must share horizontal padding `clamp(1.5rem, 5vw, 6rem)` and effective max-width `1440px`. Header uses dynamic padding formula instead of max-width to keep background full-viewport.
 - **View transitions** — inline scripts that query DOM must register `astro:after-swap` listener to re-initialize. Pattern: wrap in named function, call it, then `document.addEventListener('astro:after-swap', fn)`.
+- **Responsive JS thresholds** — checking `window.innerWidth` at init time won't recover when the viewport crosses that threshold later. Use `matchMedia` with a `change` listener for JS that enables/disables features at breakpoints.
 - **Typography tokens** — `--text-xs` (0.75rem), `--text-sm` (0.875rem), `--text-base` (1rem), `--text-lg` (1.25rem), `--text-xl` (1.5rem). Ratio ≥1.25. Do not use hardcoded font sizes.
 - **Spacing tokens** — `--space-xs` (0.25rem) through `--space-4xl` (6rem). Prefer semantic tokens for new code.
 - **Easing tokens** — `--ease-out` (expo deceleration), `--ease-in-out` (smooth). Use for entrance animations and scroll reveals.
