@@ -9,7 +9,7 @@
     <div class="hero-prefix">hello, world<span class="cursor"></span></div>
     <h1>Maksym <span class="highlight">Voitko</span></h1>
     <p class="hero-subtitle">
-      I design AI systems that survive production, build teams that multiply talent, and write about the messy middle where engineering meets reality. R&amp;D Tech Lead at <a href="https://monday.com" target="_blank" rel="noopener noreferrer" class="monday-link">Monday.com</a>.
+      I design AI systems that survive production, build teams that multiply talent, and write about the messy middle where engineering meets reality. R&amp;D Tech Lead at <a href="https://monday.com" target="_blank" rel="noopener noreferrer" class="monday-link">monday.com</a>.
     </p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="/speaking/">invite me to speak <span class="arrow">&rarr;</span></a>
@@ -202,12 +202,23 @@
     }[] = [];
     let chaotic: { x: number; y: number; vx: number; vy: number }[] = [];
     let all: { x: number; y: number }[] = [];
-    let surges: { x: number; y: number; radius: number; strength: number; speed: number; life: number }[] = [];
+    let surges: { x: number; y: number; radius: number; radiusSq: number; strength: number; speed: number; life: number }[] = [];
     const CONNECT = 65;
+    const CONNECT_SQ = CONNECT * CONNECT;
     const MOUSE_R = 120;
+    const MOUSE_R_SQ = MOUSE_R * MOUSE_R;
+    const BOUNDARY_SQ = 60 * 60;
+    const CASCADE_SQ = 35 * 35;
+    const ALPHA_BUCKETS = 20;
+    const connAlphaStrings: string[] = [];
+    for (let i = 0; i <= ALPHA_BUCKETS; i++) {
+      connAlphaStrings[i] = 'rgba(' + ar + ',' + ag + ',' + ab + ',' + (i / ALPHA_BUCKETS * CONN_ALPHA) + ')';
+    }
     let mx = -1, my = -1;
     let surgeTimer = 0, nextSurge = 40;
     let rafId = 0;
+    let boundaryChaotic: typeof chaotic = [];
+    let boundaryCount = 0;
 
     let grid: Record<string, { x: number; y: number }[]> = {};
 
@@ -232,7 +243,7 @@
       canvas.width = W * dpr;
       canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const split = W < 1024 ? 0.5 : 0.38;
+      const split = W < 1024 ? 0.6 : 0.55;
       MID = W * split;
       initParticles();
       surges.length = 0;
@@ -308,17 +319,18 @@
         strength = 0.3 + Math.random() * 0.3;
         speed = 0.6 + Math.random() * 0.8;
       }
-      surges.push({ x: MID + 10, y: Math.random() * H, radius, strength, speed, life: 1.0 });
+      surges.push({ x: MID + 10, y: Math.random() * H, radius, radiusSq: radius * radius, strength, speed, life: 1.0 });
     }
 
     function drawConn(a: { x: number; y: number }, b: { x: number; y: number }) {
       const dx = a.x - b.x, dy = a.y - b.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < CONNECT) {
+      const distSq = dx * dx + dy * dy;
+      if (distSq < CONNECT_SQ) {
+        const dist = Math.sqrt(distSq);
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = 'rgba(' + ar + ',' + ag + ',' + ab + ',' + ((1 - dist / CONNECT) * CONN_ALPHA) + ')';
+        ctx.strokeStyle = connAlphaStrings[(1 - dist / CONNECT) * ALPHA_BUCKETS | 0];
         ctx.stroke();
       }
     }
@@ -343,8 +355,9 @@
         for (let i = 0; i < ordered.length; i++) {
           const o = ordered[i];
           const dx = o.homeX - sg.x, dy = o.homeY - sg.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < sg.radius) {
+          const distSq = dx * dx + dy * dy;
+          if (distSq < sg.radiusSq) {
+            const dist = Math.sqrt(distSq);
             const force = (1 - dist / sg.radius) * sg.strength * sg.life;
             o.vx += (2 + Math.random() * 3) * force;
             o.vy += (Math.random() - 0.5) * 4 * force;
@@ -369,8 +382,9 @@
         if (c.y > H) { c.y = H; c.vy *= -1; }
         if (mx >= 0) {
           const dx = c.x - mx, dy = c.y - my;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < MOUSE_R && dist > 1) {
+          const distSq = dx * dx + dy * dy;
+          if (distSq < MOUSE_R_SQ && distSq > 1) {
+            const dist = Math.sqrt(distSq);
             if (mx > MID) {
               // Chaos side: attract
               const f = (1 - dist / MOUSE_R) * 0.5;
@@ -389,9 +403,9 @@
       }
 
       // Pre-filter chaotic particles near boundary
-      const boundaryChaotic: typeof chaotic = [];
+      boundaryCount = 0;
       for (let i = 0; i < chaotic.length; i++) {
-        if (chaotic[i].x < MID + 80) boundaryChaotic.push(chaotic[i]);
+        if (chaotic[i].x < MID + 80) boundaryChaotic[boundaryCount++] = chaotic[i];
       }
 
       // Update ordered particles
@@ -400,11 +414,12 @@
 
         // Boundary influence from nearby chaotic particles
         if (o.homeX > MID - 80) {
-          for (let j = 0; j < boundaryChaotic.length; j++) {
+          for (let j = 0; j < boundaryCount; j++) {
             const c = boundaryChaotic[j];
             const dx = o.x - c.x, dy = o.y - c.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 60) {
+            const distSq = dx * dx + dy * dy;
+            if (distSq < BOUNDARY_SQ) {
+              const dist = Math.sqrt(distSq);
               const str = (1 - dist / 60) * 0.04;
               o.vx += c.vx * str;
               o.vy += c.vy * str;
@@ -417,9 +432,9 @@
         // Cursor disruption
         if (mx >= 0) {
           const dx = o.x - mx, dy = o.y - my;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < MOUSE_R) {
-            const s = 1 - dist / MOUSE_R;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < MOUSE_R_SQ) {
+            const s = 1 - Math.sqrt(distSq) / MOUSE_R;
             o.torn = Math.min(1, o.torn + s * 0.06);
             o.vx += (Math.random() - 0.5) * s * 2;
             o.vy += (Math.random() - 0.5) * s * 2;
@@ -434,8 +449,9 @@
             const n = nbrs[k];
             if (n.torn >= o.torn - 0.2) continue;
             const dx = o.x - n.x, dy = o.y - n.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 35) {
+            const distSq = dx * dx + dy * dy;
+            if (distSq < CASCADE_SQ) {
+              const dist = Math.sqrt(distSq);
               const spread = (1 - dist / 35) * o.torn * 0.02;
               n.torn = Math.min(1, n.torn + spread);
               n.vx += o.vx * spread * 0.5;
